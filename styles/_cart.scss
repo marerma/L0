@@ -11,7 +11,7 @@
     margin: 0 auto;
     @media (max-width: $small-desktop) {
       max-width: 1024px;
-      grid-template-columns: minmax(400px, 2fr) minmax(200px, 280px);
+      grid-template-columns: minmax(400px, 2fr) minmax(200px, 300px);
     }
     @media (max-width: $tablet) {
       max-width: 850px;

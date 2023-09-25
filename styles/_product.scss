@@ -350,6 +350,7 @@ h4.product-item__text {
 }
 
 #seller {
+  position: relative;
   @media (max-width: $mobile) {
     display: none;
   }

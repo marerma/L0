@@ -1,0 +1,59 @@
+.tooltip {
+  background-color: var(--white);
+  border-radius: 1rem;
+  padding: 11px 16px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 288px;
+  opacity: 0;
+  height: auto;
+  z-index: 3;
+  position: absolute;
+  left: 0;
+  top: 24px;
+  transition: all ease 0.5s;
+  border-radius: 0.5rem;
+  &__title, 
+  &__text {
+    color: var(--black);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1rem;
+  }
+  &__text {
+    font-weight: 400;
+  }
+}
+
+.order__item_attention .tooltip {
+  top: 44px;
+  @media all and (max-width: $small-desktop) {
+    left: -16px;
+  }
+  @media all and (max-width: $tablet) {
+    transform: translateX(85%) translateY(-14px);
+  }
+  @media all and (max-width: $mobile) {
+    transform: translateX(60%) translateY(-10px);
+  }
+  @media all and (max-width: 484px) {
+    transform: translateX(10px) translateY(0%);
+  }
+}
+
+.delivery__back .tooltip {
+  left: 35%;
+  @media all and (max-width: 484px) {
+    transform: translateX(-40%) translateY(25%);
+  }
+}
+.product-item__icon-info:hover +.tooltip,
+.back-delivery:hover + .tooltip {
+  opacity: 1;
+  // width: 100%;
+  height: auto;
+  z-index: 3;
+  transition: all ease .5s;
+}

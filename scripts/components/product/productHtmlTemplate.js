@@ -37,15 +37,20 @@ export const PRODUCT_TEMPLATE = ({
           </div>
           <div class=${stock > 0 ? 'product-item__location' : 'hidden'}>
             <p class="product-item__text product-item__text_small grey">${location}</p>
-            <p class="product-item__text product-item__text_small grey" id="seller">${
+            <div class="product-item__text product-item__text_small grey" id="seller">${
               seller.title
             } <span class="product-item__icon-info">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="10" cy="10" r="7.5" stroke="#9797AF"/>
-              <path d="M9.88867 7.58691C9.62826 7.58691 9.41504 7.51042 9.24902 7.35742C9.08301 7.20117 9 7.01074 9 6.78613C9 6.55501 9.08301 6.36621 9.24902 6.21973C9.41504 6.07324 9.62826 6 9.88867 6C10.1523 6 10.3656 6.07324 10.5283 6.21973C10.6943 6.36621 10.7773 6.55501 10.7773 6.78613C10.7773 7.02051 10.6943 7.21257 10.5283 7.3623C10.3656 7.51204 10.1523 7.58691 9.88867 7.58691ZM10.6504 13.3779H9.10742V8.37793H10.6504V13.3779Z" fill="#9797AF"/>
-              </svg>
-            </span>
-            </p>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="7.5" stroke="#9797AF"/>
+                <path d="M9.88867 7.58691C9.62826 7.58691 9.41504 7.51042 9.24902 7.35742C9.08301 7.20117 9 7.01074 9 6.78613C9 6.55501 9.08301 6.36621 9.24902 6.21973C9.41504 6.07324 9.62826 6 9.88867 6C10.1523 6 10.3656 6.07324 10.5283 6.21973C10.6943 6.36621 10.7773 6.55501 10.7773 6.78613C10.7773 7.02051 10.6943 7.21257 10.5283 7.3623C10.3656 7.51204 10.1523 7.58691 9.88867 7.58691ZM10.6504 13.3779H9.10742V8.37793H10.6504V13.3779Z" fill="#9797AF"/>
+                </svg>
+              </span>
+              <div class="tooltip box-shadow" id="seller-tooltip">
+                <p class="tooltip__title">${seller.title}</p>
+                <p class="tooltip__text">ОГРН: ${seller.OGRN}</p>
+                <p class="tooltip__text">${seller.address}</p>
+              </div>
+            </div>
           </div>
         </div>
           <div class="product-item__counter-block ${
