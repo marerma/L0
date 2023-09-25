@@ -1,0 +1,23 @@
+//colors
+
+:root {
+  --orange: #F55123;
+  --violet: #6725A8;
+  --pink: #CB11AB;
+  --white: #FFFFFF;
+  --black: #000000;
+  --grey: #9797AF;
+  --grey-smoky: #F6F6FA;
+  --green: #0CD38B;
+  --light-orange: #FF970D;
+  --coral: #FF3B30;
+  --grey-transparent: rgba(0, 0, 0, 0.20);
+  --white-transparent: rgba(255, 255, 255, 0.20);
+  --grey-divider: rgba(0, 0, 0, 0.10);
+  --grey-border: rgba(255, 255, 255, 0.45);
+}
+
+$desktop: 1400px;
+$small-desktop: 1024px;
+$tablet: 850px;
+$mobile: 580px;

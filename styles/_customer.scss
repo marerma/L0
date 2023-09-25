@@ -1,0 +1,78 @@
+$marginBottom: 13px;
+
+.customer {
+  &-details__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 14px;
+    max-width: 83%;
+    @media all and (max-width: $small-desktop) {
+      max-width: 100%;
+      padding-top: 0px;
+    }
+  }
+  &-details__item {
+    position: relative;
+    margin-right: 24px;
+    padding-top: 6px;
+    @media (max-width: $mobile) {
+      flex: 1 1 100%;
+      margin-bottom:  $marginBottom;
+      margin-right: 0;
+      padding-top: 16px;
+    }
+    &:first-child, &:nth-child(2) {
+      margin-bottom: 24px;
+      flex: 2 0 46%;
+      @media (max-width: $mobile) {
+        flex: 1 1 100%;
+        margin-bottom:  $marginBottom;
+      }
+    }
+    flex: 1 1 30%;
+    &:last-child, &:nth-child(2) {
+      margin-right: 0;
+    }
+    
+  }
+  &__input {
+    width: 100%;
+    outline: transparent;
+    padding-bottom: 0;
+    border: none;
+    border-bottom: 1px solid var(--grey-transparent);
+    position: relative;
+    top: -2px;
+    @media (max-width: $mobile) {
+      top: 0px;
+      height: 24px;
+      &_error {
+        padding-top: 3px;
+      }
+    }
+  }
+}
+
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: 2px;
+  transition: all 0.1s ease;
+  @media (max-width: $mobile) {
+    top: 13px;
+  }
+}
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label {
+  top: -16px;
+  bottom: 0px;
+  left: 4px;
+  font-size: 13px;
+  @media (max-width: $mobile) {
+    top: -4px;
+    left: 0px;
+    font-size: 11px;
+  }
+}
