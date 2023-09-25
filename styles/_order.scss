@@ -17,6 +17,7 @@
   }
   &__item {
     &_attention {
+      position: relative;
       background-color: var(--grey-smoky);
       border-radius: 0.5rem;
       padding: 0.5rem;
@@ -130,5 +131,12 @@
 [data-order="payment-options"] {
   @media (max-width: $mobile) {
     display: none;
+  }
+}
+
+.back-delivery {
+  border-bottom: 1px dashed var(--green);
+  &:hover {
+    cursor: pointer;
   }
 }

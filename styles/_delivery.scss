@@ -42,10 +42,11 @@
   &__back {
     display: flex;
     align-items: center;
+    position: relative;
     &-icon {
       display: inline-block;
       background: url('/public/back_ship_icon.svg') no-repeat center;
-      width: 22px;
+      min-width: 22px;
       height: 22px;
       margin-right: 0.5rem;
     }
@@ -84,4 +85,7 @@
     font-weight: 600;
     line-height: 18px; /* 180% */
   }
+}
+.back-delivery {
+  position: relative;
 }
