@@ -53,6 +53,11 @@ $marginBottom: 13px;
   }
 }
 
+.invalidInput {
+  border-bottom: 1px solid var(--orange);
+  color: var(--orange);
+}
+
 .floating-label {
   position: absolute;
   pointer-events: none;
@@ -65,7 +70,9 @@ $marginBottom: 13px;
 }
 
 input:focus ~ .floating-label,
-input:not(:focus):valid ~ .floating-label {
+input:not(:focus):valid ~ .floating-label,
+input:not(:focus).active ~ .floating-label,
+input:focus.active ~ .floating-label {
   top: -16px;
   bottom: 0px;
   left: 4px;

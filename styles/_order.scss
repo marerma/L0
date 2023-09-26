@@ -62,6 +62,13 @@
     text-align: center;
     margin-bottom: 0.75rem;
     margin-top: 1px;
+    opacity: 1;
+    transition: all ease 0.5;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all ease 0.5;
+    }
     @media (max-width: $mobile) {
       margin-top: 12px;
     }

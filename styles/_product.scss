@@ -273,27 +273,33 @@ $lineHeight: 20px;
 
 .product-delete {
   height: 100%;
+  transition: fill ease 0.5s;
   &:hover {
     cursor: pointer;
     & path {
       fill: var(--coral);
+      transition: fill ease 0.5s;
     }
   }
   &_active path {
     fill: var(--coral);
+    transition: fill ease 0.5s;
   }
 }
 
 .product-favorite {
   height: 100%;
+  transition: fill ease 0.5s;
   &:hover {
     cursor: pointer;
     & path {
       fill: var(--pink);
+      transition: fill ease 0.5s;
     }
   }
   &_active path {
     fill: var(--pink);
+    transition: fill ease 0.5s;
   }
 }
 
@@ -310,6 +316,10 @@ input[type="checkbox"]:not(.checkbox-hack) {
   border: 1px solid var(--grey);
   transform: translateY(-0.075em);
   place-content: center;
+  transition: all ease 0.5s;
+  &:hover {
+    cursor: pointer;
+  }
 }
 input[type="checkbox"]:not(.checkbox-hack):checked {
   background-color: var(--pink);
@@ -317,6 +327,7 @@ input[type="checkbox"]:not(.checkbox-hack):checked {
   background-position: 50% 0%;
   background-size: 30px 30px;
   border: none;
+  transition: all ease 0.5s;
 }
 
 span[data-product*="rest"] {

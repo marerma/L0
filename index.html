@@ -35,7 +35,7 @@
           </div>
         </header>
         <main>
-          <form id="order-detail" class="cart__container">
+          <form id="order-detail" name="orderDetail" class="cart__container" novalidate>
             <div class="cart__section">
               <section class="cart__products">
                 <h2 class="cart__title">Корзина</h2>
@@ -127,7 +127,7 @@
                     name="firstname"
                     class="customer__input" 
                     autocomplete="off" 
-                    autofocus required />
+                    required />
                     <label 
                       for="firstname"
                       class="floating-label primary-text grey">Имя</label>
@@ -140,7 +140,7 @@
                     name="lastname" 
                     class="customer__input" 
                     autocomplete="off" 
-                    autofocus required />
+                    required />
                     <label 
                       for="lastname"
                       class="floating-label primary-text grey">Фамилия</label>
@@ -153,7 +153,7 @@
                     name="email" 
                     class="customer__input" 
                     autocomplete="off" 
-                    autofocus required />
+                    required />
                     <label 
                       for="email"
                       class="floating-label primary-text grey">Электронная почта</label>
@@ -161,13 +161,12 @@
                 </div>
                 <div class="customer-details__item">
                   <input 
-                    type="phone" 
+                    type="tel" 
                     id="phone" 
                     name="phone" 
                     class="customer__input primary-text" 
                     autocomplete="off" 
-                    autofocus required
-                    value="+7 988 123-45-67" />
+                    required />
                     <label 
                       for="phone"
                       class="floating-label primary-text grey">Телефон</label>
@@ -181,7 +180,7 @@
                     maxlength="14"
                     class="customer__input" 
                     autocomplete="off" 
-                    autofocus required />
+                    required />
                     <label 
                       for="inn"
                       class="floating-label primary-text grey">ИНН</label>
