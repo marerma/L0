@@ -67,8 +67,8 @@ export const deliveryModal = () => {
       )
       .join('')}
     </ul>
+    </div>
     <button type='button' class="button_modal-action" id="confirm-deliveryType">Выбрать</button>
-  </div>
   `;
   return modalForm;
 };

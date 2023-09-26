@@ -7,7 +7,9 @@ import { validateCustomerData } from './scripts/customerForm';
 import {
   closeModal,
   showDeliveryModal,
+  showPaymentModal,
 } from './scripts/components/modals/modal';
+import { changeButtonText } from './scripts/components/modals/paymentCardsModal';
 
 const APP_STATE = {
   isOpen: false,
@@ -15,6 +17,7 @@ const APP_STATE = {
     type: 'delivery-home',
     address: 'Бишкек, улица Табышалиева, 57',
   },
+  totalSum: '2101063',
 };
 const productsNode = document.querySelector('#product-list');
 renderProducts(productsNode, PRODUCTS);
@@ -23,6 +26,7 @@ const deliveryContainer = document.querySelector('#delivery-options');
 renderDeliveryList(deliveryContainer, DELIVERY_DATES, PRODUCTS);
 
 validateCustomerData();
-
+changeButtonText(APP_STATE);
 showDeliveryModal(APP_STATE);
+showPaymentModal(APP_STATE);
 closeModal();

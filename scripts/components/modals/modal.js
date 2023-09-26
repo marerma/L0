@@ -4,6 +4,7 @@ import {
   toggleDeliveryType,
   updateDeliveryAddress,
 } from './deliveryModal';
+import { paymentCardsModal, updatePaymentCard } from './paymentCardsModal';
 
 export const hideModalVisibility = () => {
   const modal = queryElement('.modal');
@@ -41,7 +42,18 @@ export const showDeliveryModal = (state) => {
     el.addEventListener('click', () => {
       showModal(state.isOpen, deliveryModalContent, MODAL_CONTAINER);
       toggleDeliveryType();
-      updateDeliveryAddress(state);
+      updateDeliveryAddress();
+    })
+  );
+};
+
+export const showPaymentModal = (state) => {
+  const btn = [...document.querySelectorAll('.payment-edit')];
+  const paymentModalContent = paymentCardsModal();
+  btn.forEach((el) =>
+    el.addEventListener('click', () => {
+      showModal(state.isOpen, paymentModalContent, MODAL_CONTAINER);
+      updatePaymentCard();
     })
   );
 };
