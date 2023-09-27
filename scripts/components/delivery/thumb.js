@@ -1,4 +1,4 @@
-import { createElement } from '../../utils/utils';
+import { createElement, getRetinaSrc } from '../../utils/utils';
 
 export class ThumbImage {
   constructor(src, title, amount) {
@@ -11,6 +11,7 @@ export class ThumbImage {
     const div = createElement('div');
     const image = createElement('img');
     image.setAttribute('src', this.src);
+    image.setAttribute('srcset', `${getRetinaSrc(this.src)}`);
     image.setAttribute('alt', this.title);
     image.setAttribute('loading', 'lazy');
 

@@ -2,6 +2,7 @@ import {
   checkPriceLength,
   formatPrice,
   getFullProductPrice,
+  getRetinaSrc,
 } from '../../utils/utils';
 
 export const PRODUCT_TEMPLATE = ({
@@ -20,7 +21,7 @@ export const PRODUCT_TEMPLATE = ({
       <input type='checkbox' name="selected-items" id="selected-${id}" checked>
     </div>
     <div class="product-item__image">
-      <img src=${image} alt=${title}>
+      <img src=${image} srcset="${getRetinaSrc(image)} 2x" alt=${title}>
       <div class="product-item__size-icon ${
         properties.size ? '' : ' transparent'
       }">${properties.size ?? ''}</div>

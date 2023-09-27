@@ -55,6 +55,9 @@ const getDeliveryDates = (products) => {
   }, {});
 };
 
+const getRetinaSrc = (src) => {
+  return `${src.split('.')[0]}_x2.png`;
+};
 const formatPhone = (value) => {
   let inputValue = value.slice(0, 30).replace(/[^\d+]/g, '');
 
@@ -110,4 +113,5 @@ export {
   getDeliveryDates,
   findProduct,
   getFullProductPrice,
+  getRetinaSrc,
 };
