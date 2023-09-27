@@ -9,7 +9,6 @@ const createElement = (tag, className) => {
 
 const queryElement = (name) => {
   const el = document.querySelector(name);
-
   return el;
 };
 
@@ -23,22 +22,37 @@ const checkPriceLength = (price) => {
 
 const checkStockAmount = (stock) => stock < 3;
 
-const filterProductsOnDelivery = (date, products) => {
-  const productsList = products
-    .filter((item) => item.shippingSchedule?.find((d) => d.date === date))
-    .map((product) => {
-      const filteredDate = product.shippingSchedule.find(
-        (el) => el.date === date
-      );
-      const newProd = {
-        id: product.id,
-        shippingSchedule: filteredDate,
-        image: product.image,
-        title: product.title,
-      };
-      return newProd;
-    });
-  return productsList;
+const filterProductsInCart = (idsArray, productDb) => {
+  return productDb.filter((item) =>
+    idsArray.find((prod) => prod.id === item.id)
+  );
+};
+
+const getDeliveryDates = (products) => {
+  return products.reduce((obj, el) => {
+    const { shipping } = el;
+
+    if (shipping && shipping.length) {
+      shipping.forEach(({ date, maxQuantity }) => {
+        obj[date]
+          ? obj[date].push({
+              id: el.id,
+              amount: maxQuantity,
+              image: el.image,
+              title: el.title,
+            })
+          : (obj[date] = [
+              {
+                id: el.id,
+                amount: maxQuantity,
+                image: el.image,
+                title: el.title,
+              },
+            ]);
+      });
+    }
+    return obj;
+  }, {});
 };
 
 const formatPhone = (value) => {
@@ -76,13 +90,24 @@ const focusFirstInputWithError = () => {
   }
 };
 
+const getFullProductPrice = (amount, price) => {
+  return price * amount;
+};
+
+const findProduct = (id, db) => {
+  return db.find((el) => el.id === id);
+};
+
 export {
   createElement,
   formatPrice,
   checkPriceLength,
   checkStockAmount,
-  filterProductsOnDelivery,
   queryElement,
   formatPhone,
   focusFirstInputWithError,
+  filterProductsInCart,
+  getDeliveryDates,
+  findProduct,
+  getFullProductPrice,
 };

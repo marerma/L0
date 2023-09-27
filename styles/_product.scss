@@ -380,3 +380,16 @@ h4.product-item__text {
     cursor: pointer;
   }
 }
+
+
+.counter-icon-plus:hover,
+.counter-icon-minus:hover {
+  cursor: pointer;
+}
+
+.disabled {
+  color: var(--grey);
+  &:hover {
+    cursor: default;
+  }
+}

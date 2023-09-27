@@ -1,4 +1,4 @@
-import { ThumbImage } from '../thumb';
+import { ThumbImage } from './thumb';
 import { createElement } from '../../utils/utils';
 
 export class DeliveryItem {
@@ -15,12 +15,9 @@ export class DeliveryItem {
 
     if (this.products.length) {
       let thumbsHtml = [];
-      this.products.forEach(({ shippingSchedule, title, image }) => {
-        const thumb = new ThumbImage(
-          image,
-          title,
-          shippingSchedule.maxQuantity
-        ).renderNode().innerHTML;
+      this.products.forEach(({ amount, title, image }) => {
+        const thumb = new ThumbImage(image, title, amount).renderNode()
+          .innerHTML;
         thumbsHtml.push(thumb);
       });
 

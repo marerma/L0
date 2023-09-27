@@ -1,4 +1,8 @@
-import { checkPriceLength, formatPrice } from '../../utils/utils';
+import {
+  checkPriceLength,
+  formatPrice,
+  getFullProductPrice,
+} from '../../utils/utils';
 
 export const PRODUCT_TEMPLATE = ({
   id,
@@ -57,9 +61,13 @@ export const PRODUCT_TEMPLATE = ({
             stock <= 0 ? 'absent' : ''
           }">
             <div class=${stock > 0 ? 'product-item__counter' : 'hidden'}>
-              <span class="product-item__text product-item__text_large">−</span>
-              <span class="product-item__text" data-props="amount">${amount}</span>
-              <span class="product-item__text product-item__text_large">+</span>
+              <span class="product-item__text product-item__text_large counter-icon-minus ${
+                amount === 1 ? 'disabled' : ''
+              }" data-counter=${id}>−</span>
+              <span class="product-item__text" data-counter="amount">${amount}</span>
+              <span class="product-item__text product-item__text_large counter-icon-plus ${
+                amount === stock ? 'disabled' : ''
+              }" data-counter=${id}>+</span>
             </div>
             <div class=${stock < 3 && stock > 1 ? '' : 'hidden'}>
               <span class="product-item__text product-item__text_small coral" data-product="rest-${id}"> Осталось ${stock} шт.</span>
@@ -76,19 +84,25 @@ export const PRODUCT_TEMPLATE = ({
             </div>
           </div>
           <div class=${stock > 0 ? 'product-item__price' : 'hidden'}>
-            <div>
-              <span class="product-item__text ${
-                checkPriceLength(price.discount)
+            <div id="full-price">
+              <span class="product-item__text full-price ${
+                checkPriceLength(getFullProductPrice(price.discount, amount))
                   ? 'product-item__text_large'
                   : ''
-              } product-item__text_bold">${formatPrice(price.discount)}</span>
+              } product-item__text_bold">${formatPrice(
+                getFullProductPrice(price.discount, amount)
+              )}</span>
               <span class="product-item__text product-item__text_bold">сом</span>
             </div>
             <div id="discount-price"> 
-              <span class="product-item__text product-item__text_small overwritten">${formatPrice(
-                price.full
+              <span class="product-item__text product-item__text_small overwritten discount-price">${formatPrice(
+                getFullProductPrice(price.full, amount)
               )}</span>
               <span class="product-item__text product-item__text_small overwritten"> сом</span></div>
+              <div class="tooltip box-shadow price-tooltip_wrapper">
+                <p class="tooltip__text price-tooltip"><span>Скидка 55%</span><span>-300 сом</span></p>
+                <p class="tooltip__text price-tooltip"><span>Скидка покупателя 10%</span><span>-30 сом</span></p>
+              </div>
           </div>
         </div>`;
 };

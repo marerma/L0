@@ -1,11 +1,10 @@
-import { filterProductsOnDelivery } from '../../utils/utils';
 import { DeliveryItem } from './delivery';
 
-export function renderDeliveryList(parentNode, deliveryDates, products) {
+export function renderDeliveryList(parentNode, deliveryDates) {
   const node = document.createElement('div');
 
-  deliveryDates.forEach((date) => {
-    const prods = filterProductsOnDelivery(date, products);
+  Object.keys(deliveryDates).forEach((date) => {
+    const prods = deliveryDates[date];
     const deliveryThumbs = new DeliveryItem(date, prods).renderNode();
     node.append(deliveryThumbs);
   });

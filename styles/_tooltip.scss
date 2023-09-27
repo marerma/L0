@@ -49,11 +49,29 @@
     transform: translateX(-40%) translateY(25%);
   }
 }
+#discount-price {
+  position: relative;
+}
+
 .product-item__icon-info:hover +.tooltip,
-.back-delivery:hover + .tooltip {
+.back-delivery:hover + .tooltip,
+#discount-price:hover +.tooltip {
   opacity: 1;
-  // width: 100%;
   height: auto;
   z-index: 3;
   transition: all ease .5s;
+}
+
+.price-tooltip {
+  color: var(--grey);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+}
+.price-tooltip_wrapper {
+  max-width: 239px;
+  position: absolute;
+  left: calc(100% - 239px + 16px);
+  top: 54px;
 }

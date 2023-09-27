@@ -19,7 +19,7 @@ export const PRODUCTS = [
       address:
         '142181, Московская область, д Коледино, тер. Индустриальный Парк Коледино, д. 6 стр. 1',
     },
-    shippingSchedule: [
+    shipping: [
       {
         date: '5—6 февраля',
         maxQuantity: 1,
@@ -32,8 +32,8 @@ export const PRODUCTS = [
     title:
       'Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe',
     price: {
-      discount: 2100047,
-      full: 2300047,
+      discount: 10500,
+      full: 11500,
     },
     properties: {
       color: 'прозрачный',
@@ -47,7 +47,7 @@ export const PRODUCTS = [
       address:
         '129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34',
     },
-    shippingSchedule: [
+    shipping: [
       {
         date: '5—6 февраля',
         maxQuantity: 184,
@@ -64,8 +64,8 @@ export const PRODUCTS = [
     title:
       'Карандаши цветные Faber-Castell "Замок", набор 24 цвета, заточенные, шестигранные, Faber-Castell',
     price: {
-      discount: 494,
-      full: 950,
+      discount: 247,
+      full: 475,
     },
     amount: 2,
     stock: 2,
@@ -77,7 +77,7 @@ export const PRODUCTS = [
       address:
         '142181, Московская область, д Коледино, тер. Индустриальный Парк Коледино, д. 6 стр. 1',
     },
-    shippingSchedule: [
+    shipping: [
       {
         date: '5—6 февраля',
         maxQuantity: 2,
@@ -112,8 +112,8 @@ export const PRODUCTS = [
     title:
       'Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe',
     price: {
-      discount: 2100047,
-      full: 2300000,
+      discount: 10500,
+      full: 11500,
     },
     properties: {
       color: 'прозрачный',
@@ -134,8 +134,8 @@ export const PRODUCTS = [
     title:
       'Карандаши цветные Faber-Castell "Замок", набор 24 цвета, заточенные, шестигранные, Faber-Castell',
     price: {
-      discount: 494,
-      full: 950,
+      discount: 247,
+      full: 475,
     },
     amount: 0,
     stock: 0,
