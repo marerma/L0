@@ -393,3 +393,34 @@ h4.product-item__text {
     cursor: default;
   }
 }
+
+
+.toggle-section{
+  display: block;
+  position: relative;
+  height: 100%;
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.hide-toggle {
+  transform: translateY(-110%);
+  position: relative;
+  opacity: 0;
+  height: 0;
+  animation-duration:  0.5s;
+  animation-name: slideup;
+}
+
+@keyframes slideup {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-110%);
+  }
+}

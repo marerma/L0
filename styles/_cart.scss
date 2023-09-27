@@ -83,16 +83,14 @@
 }
 
 .toggle-icon {
+  transform: rotate(0deg);
+  transition: all ease 0.3s;
   &:hover {
     cursor: pointer;
   }
-  &_open {
-    transform: rotate(0deg);
-    transition: rotate ease 0.5s;
-  }
   &_closed {
     transform: rotate(180deg);
-    transition: rotate ease 0.5s;
+    transition: all ease 0.3s;
   }
 }
 
@@ -134,3 +132,6 @@
   }
 }
 
+.withoutBorder {
+  border: none;
+}

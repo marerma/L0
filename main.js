@@ -10,7 +10,10 @@ import {
 } from './scripts/components/modals/modal';
 import { changeButtonText } from './scripts/components/modals/paymentCardsModal';
 import { filterProductsInCart, getDeliveryDates } from './scripts/utils/utils';
-import { changeProductAmount } from './scripts/components/delivery/totalSum';
+import {
+  changeProductAmount,
+  toggleSection,
+} from './scripts/components/delivery/totalSum';
 
 const APP_STATE = {
   isOpen: false,
@@ -33,13 +36,14 @@ const APP_STATE = {
   favoriteProducts: [],
 };
 
-const productsNode = document.querySelector('#product-list');
+const productsNode = document.getElementById('product-list');
+const productsNodeEmpty = document.getElementById('product-list_empty');
 const initialProductsList = filterProductsInCart(
   APP_STATE.productisInCartIds,
   PRODUCTS
 );
 const initialDeliveryDates = getDeliveryDates(initialProductsList);
-renderProducts(productsNode, initialProductsList);
+renderProducts(productsNode, productsNodeEmpty, initialProductsList);
 
 const deliveryContainer = document.querySelector('#delivery-options');
 renderDeliveryList(deliveryContainer, initialDeliveryDates);
@@ -49,4 +53,5 @@ validateCustomerData();
 changeButtonText(APP_STATE);
 showDeliveryModal(APP_STATE);
 showPaymentModal(APP_STATE);
+toggleSection();
 closeModal();

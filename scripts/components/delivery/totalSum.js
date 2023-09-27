@@ -97,16 +97,40 @@ const changeProductAmount = (state) => {
   });
 };
 const updateSum = (state) => {
-  const TOTAL_SUM = queryElement('.final-sum');
+  const TOTAL_SUM = document.querySelectorAll('.final-sum');
+  const TOTAL_ITEMS_AMOUNT = document.querySelectorAll('.final-amount');
   const TOTAL_SUM_DISCOUNT = queryElement('.final-discountSum');
   const TOTAL_SUM_FULL = queryElement('.final-fullSum');
-  const TOTAL_ITEMS_AMOUNT = queryElement('.final-amount');
 
   const { totalSum, totalDiscount, fullSum, totalAmount } = state;
 
-  TOTAL_SUM.textContent = formatPrice(totalSum);
+  TOTAL_SUM.forEach((el) => (el.textContent = formatPrice(totalSum)));
   TOTAL_SUM_DISCOUNT.textContent = `${formatPrice(totalDiscount)} сом`;
   TOTAL_SUM_FULL.textContent = `${formatPrice(fullSum)} сом`;
-  TOTAL_ITEMS_AMOUNT.textContent = `${totalAmount} товаров`;
+  TOTAL_ITEMS_AMOUNT.forEach(
+    (el) => (el.textContent = `${totalAmount} товаров`)
+  );
 };
-export { updateSum, changeProductAmount };
+
+const toggleSection = () => {
+  const toggler = document.querySelectorAll('.toggle-icon');
+
+  toggler.forEach((el) =>
+    el.addEventListener('click', () => {
+      const parent = el.parentElement;
+      if (el.classList.contains('available')) {
+        const section = parent.nextElementSibling;
+        const innerInfoNode = el.previousElementSibling;
+        for (const child of innerInfoNode.children) {
+          child.classList.toggle('hidden');
+        }
+        section.classList.toggle('hide-toggle');
+      } else {
+        parent.parentElement.nextElementSibling.classList.toggle('hide-toggle');
+        parent.classList.toggle('withoutBorder')
+      }
+      el.classList.toggle('toggle-icon_closed');
+    })
+  );
+};
+export { updateSum, changeProductAmount, toggleSection };
