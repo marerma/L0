@@ -32,3 +32,12 @@ export function renderProducts(parentNode, parentNodeEmpty, products) {
     parentNodeEmpty.append(div, divList);
   }
 }
+
+export function changeFavorite() {
+  const allProducts = document.querySelectorAll('.product-favorite');
+  for (const heart of allProducts) {
+    heart.addEventListener('click', () => {
+      heart.classList.toggle('product-favorite_active');
+    });
+  }
+}

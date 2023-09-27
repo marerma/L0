@@ -8,7 +8,7 @@
   width: 288px;
   opacity: 0;
   height: auto;
-  z-index: 3;
+  z-index: -1;
   position: absolute;
   left: 0;
   top: 24px;
@@ -55,10 +55,10 @@
 
 .product-item__icon-info:hover +.tooltip,
 .back-delivery:hover + .tooltip,
-#discount-price:hover +.tooltip {
+#discount-price:hover + .tooltip {
   opacity: 1;
   height: auto;
-  z-index: 3;
+  z-index: 14;
   transition: all ease .5s;
 }
 

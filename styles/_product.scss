@@ -297,9 +297,11 @@ $lineHeight: 20px;
       transition: fill ease 0.5s;
     }
   }
-  &_active path {
-    fill: var(--pink);
-    transition: fill ease 0.5s;
+  &_active {
+    & path {
+      fill: var(--pink);
+      transition: fill ease 0.5s;
+    }
   }
 }
 
@@ -395,12 +397,10 @@ h4.product-item__text {
 }
 
 
-.toggle-section{
+.toggle-section {
   display: block;
   position: relative;
   height: 100%;
-  opacity: 1;
-  transform: translateY(0%);
 }
 
 .hide-toggle {
@@ -410,6 +410,7 @@ h4.product-item__text {
   height: 0;
   animation-duration:  0.5s;
   animation-name: slideup;
+  z-index: -20;
 }
 
 @keyframes slideup {

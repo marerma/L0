@@ -127,7 +127,7 @@ const toggleSection = () => {
         section.classList.toggle('hide-toggle');
       } else {
         parent.parentElement.nextElementSibling.classList.toggle('hide-toggle');
-        parent.classList.toggle('withoutBorder')
+        parent.classList.toggle('withoutBorder');
       }
       el.classList.toggle('toggle-icon_closed');
     })

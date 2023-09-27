@@ -1,5 +1,8 @@
 import './style.scss';
-import { renderProducts } from './scripts/components/product/productList';
+import {
+  changeFavorite,
+  renderProducts,
+} from './scripts/components/product/productList';
 import { PRODUCTS } from './scripts/mockdata/products';
 import { renderDeliveryList } from './scripts/components/delivery/deliveryList';
 import { validateCustomerData } from './scripts/customerForm';
@@ -54,4 +57,5 @@ changeButtonText(APP_STATE);
 showDeliveryModal(APP_STATE);
 showPaymentModal(APP_STATE);
 toggleSection();
+changeFavorite();
 closeModal();
