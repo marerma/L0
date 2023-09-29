@@ -1,16 +1,16 @@
 @import './styles/normalize.css';
-@import './styles/vars';
-@import './styles/typographic';
-@import './styles/header';
-@import './styles/cart';
-@import './styles/product';
-@import './styles/delivery';
-@import './styles/payment';
-@import './styles/customer';
-@import './styles/order';
-@import './styles/footer';
-@import './styles/tooltip';
-@import './styles/modal';
+@import './styles/vars.css';
+@import './styles/typographic.css';
+@import './styles/header.css';
+@import './styles/cart.css';
+@import './styles/product.css';
+@import './styles/delivery.css';
+@import './styles/payment.css';
+@import './styles/customer.css';
+@import './styles/order.css';
+@import './styles/footer.css';
+@import './styles/tooltip.css';
+@import './styles/modal.css';
 
 :root {
   font-family: 'Segoe UI', sans-serif;
@@ -22,7 +22,6 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
 * {
   padding: 0;
   margin: 0;
@@ -30,14 +29,12 @@
   font-family: 'Segoe UI', sans-serif;
   box-sizing: border-box;
 }
-
 body {
   background-color: var(--violet);
   min-height: 100vh;
   max-width: 100%;
   overflow-x: hidden;
 }
-
 #app {
   min-height: 100vh;
   display: flex;
@@ -50,7 +47,6 @@ main {
   flex-grow: 2;
   display: flex;
 }
-
 .button {
   all: unset;
   width: 100%;
@@ -65,16 +61,16 @@ main {
   opacity: 1;
   transition: all ease 0.5;
   margin-bottom: 0.75rem;
-  &:hover {
-    cursor: pointer;
-    opacity: 0.7;
-    transition: all ease 0.5;
-  }
-  &:disabled {
-    opacity: 0.7;
-    background-color: (var--grey);
-    &:hover {
-      cursor: default;
-    }
-  }
+}
+.button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all ease 0.5;
+}
+.button:disabled {
+  opacity: 0.7;
+  background-color: var--grey;
+}
+.button:disabled:hover {
+  cursor: default;
 }

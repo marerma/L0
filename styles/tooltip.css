@@ -13,45 +13,39 @@
   left: 0;
   top: 24px;
   transition: all ease 0.5s;
-  border-radius: 0.5rem;
-  &__title,
-  &__text {
+  border-radius: 0.5rem; }
+  .tooltip__title, .tooltip__text {
     color: var(--black);
     font-size: 13px;
     font-style: normal;
     font-weight: 700;
-    line-height: 1rem;
-  }
-  &__text {
-    font-weight: 400;
-  }
-}
+    line-height: 1rem; }
+  .tooltip__text {
+    font-weight: 400; }
 
 .order__item_attention .tooltip {
-  top: 44px;
-  @media all and (max-width: $small-desktop) {
-    left: -16px;
-  }
-  @media all and (max-width: $tablet) {
-    transform: translateX(85%) translateY(-14px);
-  }
-  @media all and (max-width: $mobile) {
-    transform: translateX(60%) translateY(-10px);
-  }
+  top: 44px; }
+  @media all and (max-width: var(--small-desktop)) {
+    .order__item_attention .tooltip {
+      left: -16px; } }
+  @media all and (max-width: var(--tablet)) {
+    .order__item_attention .tooltip {
+      transform: translateX(85%) translateY(-14px); } }
+  @media all and (max-width: var(--mobile)) {
+    .order__item_attention .tooltip {
+      transform: translateX(60%) translateY(-10px); } }
   @media all and (max-width: 484px) {
-    transform: translateX(10px) translateY(0%);
-  }
-}
+    .order__item_attention .tooltip {
+      transform: translateX(10px) translateY(0%); } }
 
 .delivery__back .tooltip {
-  left: 35%;
+  left: 35%; }
   @media all and (max-width: 484px) {
-    transform: translateX(-40%) translateY(25%);
-  }
-}
+    .delivery__back .tooltip {
+      transform: translateX(-40%) translateY(25%); } }
+
 #discount-price {
-  position: relative;
-}
+  position: relative; }
 
 .product-item__icon-info:hover + .tooltip,
 .back-delivery:hover + .tooltip,
@@ -59,19 +53,17 @@
   opacity: 1;
   height: auto;
   z-index: 14;
-  transition: all ease 0.5s;
-}
+  transition: all ease 0.5s; }
 
 .price-tooltip {
   color: var(--grey);
   width: 100%;
   display: flex;
   justify-content: space-between;
-  justify-items: center;
-}
+  justify-items: center; }
+
 .price-tooltip_wrapper {
   max-width: 239px;
   position: absolute;
   left: calc(100% - 239px + 16px);
-  top: 54px;
-}
+  top: 54px; }

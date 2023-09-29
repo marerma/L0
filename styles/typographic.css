@@ -2,56 +2,47 @@
   font-size: 0.8125rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 1rem;
-}
+  line-height: 1rem; }
 
 .bold {
-  font-weight: 700;
-}
+  font-weight: 700; }
+
 .primary-text {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-size: 16px;
-  color: var(--black);
-}
+  color: var(--black); }
 
 .error-text {
   color: var(--orange);
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 0.875rem; /* 116.667% */
-}
+  line-height: 0.875rem;
+  /* 116.667% */ }
 
 .subtitle {
   font-size: 1rem;
   font-style: normal;
   font-weight: 600;
-  line-height: 1.5rem;
-  &_bold {
-    font-weight: 700;
-  }
-}
+  line-height: 1.5rem; }
+  .subtitle_bold {
+    font-weight: 700; }
 
 .grey {
-  color: var(--grey);
-}
+  color: var(--grey); }
+
 .coral {
-  color: var(--coral);
-}
+  color: var(--coral); }
 
 .pink {
-  color: var(--pink);
-  &:hover {
-    cursor: pointer;
-  }
-}
+  color: var(--pink); }
+  .pink:hover {
+    cursor: pointer; }
 
 .green {
-  color: var(--green);
-}
+  color: var(--green); }
 
 .black {
-  color: var(--black);
-}
+  color: var(--black); }
