@@ -1,5 +1,6 @@
 import { PATTERN_MAP } from '../utils/constants';
 import { formatPhone, focusFirstInputWithError } from '../utils/utils';
+import { showConfirmModal } from './modals/modal';
 
 const FORM_STATE = {
   firstname: { isTouched: false },
@@ -106,7 +107,7 @@ function updateInputClass(inputNode) {
   }
 }
 
-function validateForm(form) {
+function validateForm(form, state) {
   CUSTOMER_INFO_FIELDS.forEach((name) => {
     const inputNode = form.elements[name];
     const inputValue = form.elements[name].value.trim();
@@ -117,6 +118,12 @@ function validateForm(form) {
     FORM_STATE[name].isTouched = true;
   });
   focusFirstInputWithError();
+
+  const errors = [...document.querySelectorAll('.customer__input_error')];
+  const length = errors.filter((el) => el.classList.contains('black')).length;
+  if (length === 5) {
+    showConfirmModal(state);
+  }
 }
 
 function revalidateInputs(fields, form) {
@@ -157,10 +164,10 @@ function revalidateInputs(fields, form) {
   });
 }
 
-function validateCustomerData() {
+function validateCustomerData(state) {
   CUSTOMER_FORM.addEventListener('submit', function (event) {
     event.preventDefault();
-    validateForm(this);
+    validateForm(this, state);
   });
   revalidateInputs(CUSTOMER_INFO_FIELDS, CUSTOMER_FORM);
 }

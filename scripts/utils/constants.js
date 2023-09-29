@@ -5,6 +5,7 @@ export const CONTAINER_ELEMENTS = {
   deliveryContainer: document.getElementById('delivery-options'),
   modal: document.querySelector('.modal'),
   modalInner: document.querySelector('.modal__content'),
+  confirmBtn: document.querySelector('.order__submit-btn'),
 };
 
 export const MAIL_REG = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;

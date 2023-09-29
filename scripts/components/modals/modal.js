@@ -1,6 +1,7 @@
 import { CONTAINER_ELEMENTS } from '../../utils/constants';
 import { queryElement } from '../../utils/utils';
 import { deliveryModal, toggleDeliveryType } from './deliveryModal';
+import { orderConfirmModal } from './orderConfirm';
 import { paymentCardsModal } from './paymentCardsModal';
 
 export const hideModalVisibility = () => {
@@ -50,4 +51,9 @@ export const showPaymentModal = (state) => {
       showModal(state, paymentModalContent, CONTAINER_ELEMENTS.modalInner);
     })
   );
+};
+
+export const showConfirmModal = (state) => {
+  const confirmModalContent = orderConfirmModal();
+  showModal(state, confirmModalContent, CONTAINER_ELEMENTS.modalInner);
 };

@@ -9,6 +9,7 @@ export {
   closeModal,
   showDeliveryModal,
   showPaymentModal,
+  showConfirmModal,
 } from './modals/modal';
 export { changeSubmitButtonText } from './modals/paymentCardsModal';
 export {

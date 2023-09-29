@@ -33,7 +33,7 @@ deleteProduct(APP_STATE);
 toggleSection();
 updateSelection(APP_STATE);
 
-validateCustomerData();
+validateCustomerData(APP_STATE);
 changeSubmitButtonText(APP_STATE);
 showDeliveryModal(APP_STATE);
 showPaymentModal(APP_STATE);
