@@ -94,10 +94,10 @@
     }
   }
   &__button {
-      -webkit-appearance: none;
-      appearance: none;
-      background-color: #fff;
-      margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
   }
   &__list-wrapper {
     &_list {
@@ -159,7 +159,7 @@
   margin: 0;
   width: 20px;
   height: 20px;
-  border:1px solid var(--grey);
+  border: 1px solid var(--grey);
   border-radius: 50%;
   margin-right: 8px;
   z-index: 14;
@@ -202,7 +202,7 @@
     content: url('./star_icon.svg');
     position: absolute;
     left: -20px;
-}
+  }
 }
 
 .hidden {

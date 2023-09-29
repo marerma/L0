@@ -17,23 +17,24 @@ $marginBottom: 13px;
     padding-top: 6px;
     @media (max-width: $mobile) {
       flex: 1 1 100%;
-      margin-bottom:  $marginBottom;
+      margin-bottom: $marginBottom;
       margin-right: 0;
       padding-top: 16px;
     }
-    &:first-child, &:nth-child(2) {
+    &:first-child,
+    &:nth-child(2) {
       margin-bottom: 24px;
       flex: 2 0 46%;
       @media (max-width: $mobile) {
         flex: 1 1 100%;
-        margin-bottom:  $marginBottom;
+        margin-bottom: $marginBottom;
       }
     }
     flex: 1 1 30%;
-    &:last-child, &:nth-child(2) {
+    &:last-child,
+    &:nth-child(2) {
       margin-right: 0;
     }
-    
   }
   &__input {
     width: 100%;

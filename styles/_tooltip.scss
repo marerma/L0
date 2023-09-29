@@ -14,7 +14,7 @@
   top: 24px;
   transition: all ease 0.5s;
   border-radius: 0.5rem;
-  &__title, 
+  &__title,
   &__text {
     color: var(--black);
     font-size: 13px;
@@ -53,13 +53,13 @@
   position: relative;
 }
 
-.product-item__icon-info:hover +.tooltip,
+.product-item__icon-info:hover + .tooltip,
 .back-delivery:hover + .tooltip,
 #discount-price:hover + .tooltip {
   opacity: 1;
   height: auto;
   z-index: 14;
-  transition: all ease .5s;
+  transition: all ease 0.5s;
 }
 
 .price-tooltip {

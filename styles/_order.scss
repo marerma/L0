@@ -36,7 +36,7 @@
     }
     &-block {
       margin-bottom: 1.5rem;
-      &>p.tertiary-text:first-of-type {
+      & > p.tertiary-text:first-of-type {
         padding-top: 6px;
       }
       @media (max-width: $mobile) {
@@ -125,7 +125,9 @@
 
 .box-shadow {
   border-radius: 16px;
-  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.30), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0px 0px 1px 0px rgba(0, 0, 0, 0.3),
+    0px 2px 10px 0px rgba(0, 0, 0, 0.15);
   @media (max-width: $mobile) {
     &#order {
       box-shadow: none;
@@ -133,17 +135,17 @@
   }
 }
 
-[data-order="delivery"], [data-order="card"] {
+[data-order='delivery'],
+[data-order='card'] {
   @media (max-width: $mobile) {
-    & .order__title-wrapper, 
+    & .order__title-wrapper,
     & > p {
       display: none;
     }
   }
 }
 
-
-[data-order="payment-options"] {
+[data-order='payment-options'] {
   @media (max-width: $mobile) {
     display: none;
   }

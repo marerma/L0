@@ -35,7 +35,7 @@
     font-size: 1.75rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 2.25rem; 
+    line-height: 2.25rem;
     letter-spacing: -0.28px;
     margin-bottom: 27px;
     padding-top: 10px;
@@ -112,8 +112,9 @@
         border-radius: 0;
       }
     }
-  };
-  &__title, &__title-small {
+  }
+  &__title,
+  &__title-small {
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
