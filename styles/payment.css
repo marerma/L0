@@ -8,12 +8,12 @@
   display: flex;
   justify-content: space-between;
   gap: 2rem; }
-  .payment__item-wrapper {
-    width: 100%; }
-    .payment__item-wrapper span:nth-child(2) {
-      margin-left: 6px; }
-  .payment__item p:nth-child(1) {
-    width: 153px; }
+.payment__item-wrapper {
+  width: 100%; }
+  .payment__item-wrapper span:nth-child(2) {
+    margin-left: 6px; }
+.payment__item p:nth-child(1) {
+  width: 153px; }
 
 .payment__card-number-wrapper span:nth-child(3) {
   margin-left: 12px; }

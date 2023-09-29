@@ -6,7 +6,7 @@
     text-align: center; }
   .footer__menu-wrapper {
     display: none; }
-    @media (max-width: var(--mobile)) {
+    @media all and (max-width: var(--mobile)) {
       .footer__menu-wrapper {
         display: flex;
         justify-content: center;

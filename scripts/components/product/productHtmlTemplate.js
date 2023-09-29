@@ -61,7 +61,7 @@ export const PRODUCT_TEMPLATE = ({
           <div class="product-item__counter-block ${
             stock <= 0 ? 'absent' : ''
           }">
-            <div class=${stock > 0 ? 'product-item__counter' : 'hidden'}>
+            <div class="${stock > 0 ? 'product-item__counter' : 'hidden'}">
               <span class="product-item__text product-item__text_large counter-icon-minus ${
                 amount === 1 ? 'disabled' : ''
               }" data-counter=${id}>−</span>
@@ -70,7 +70,9 @@ export const PRODUCT_TEMPLATE = ({
                 amount === stock ? 'disabled' : ''
               }" data-counter=${id}>+</span>
             </div>
-            <div class=${stock < 3 && stock > 1 ? '' : 'hidden'}>
+            <div class=${
+              stock < 3 && stock > 1 ? 'product-item__rest' : 'hidden'
+            }>
               <span class="product-item__text product-item__text_small coral" data-product="rest-${id}"> Осталось ${stock} шт.</span>
             </div>
             <div class="product-item__icons-block">
