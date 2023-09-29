@@ -1,5 +1,5 @@
-import { PATTERN_MAP } from './utils/constants';
-import { formatPhone, focusFirstInputWithError } from './utils/utils';
+import { PATTERN_MAP } from '../utils/constants';
+import { formatPhone, focusFirstInputWithError } from '../utils/utils';
 
 const FORM_STATE = {
   firstname: { isTouched: false },

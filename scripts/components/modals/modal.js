@@ -1,59 +1,53 @@
+import { CONTAINER_ELEMENTS } from '../../utils/constants';
 import { queryElement } from '../../utils/utils';
-import {
-  deliveryModal,
-  toggleDeliveryType,
-  updateDeliveryAddress,
-} from './deliveryModal';
-import { paymentCardsModal, updatePaymentCard } from './paymentCardsModal';
+import { deliveryModal, toggleDeliveryType } from './deliveryModal';
+import { paymentCardsModal } from './paymentCardsModal';
 
 export const hideModalVisibility = () => {
-  const modal = queryElement('.modal');
-  const modalContent = queryElement('.modal__content');
-  modal.classList.add('hidden');
-  modalContent.removeChild(modalContent.lastChild);
+  const formToDelete = queryElement('.modal-form');
+  CONTAINER_ELEMENTS.modal.classList.add('hidden');
+  formToDelete.remove();
 };
 
-export const closeModal = () => {
-  const modal = queryElement('.modal');
-  const modalContent = queryElement('.modal__content');
+export const closeModal = (state) => {
   const closeIcon = queryElement('.modal__close-icon');
 
-  modal.addEventListener('click', (event) => {
-    if (event.target.contains(modalContent) || event.target === closeIcon) {
+  CONTAINER_ELEMENTS.modal.addEventListener('click', (event) => {
+    if (
+      event.target.contains(CONTAINER_ELEMENTS.modalInner) ||
+      event.target === closeIcon
+    ) {
       hideModalVisibility();
+      state.isOpen = false;
     }
   });
 };
 
-const MODAL_GLOBAL = queryElement('.modal');
-const MODAL_CONTAINER = queryElement('#modal-container');
-
-export const showModal = (isOpen, modalContent, rootModal) => {
-  if (!isOpen) {
+export const showModal = (state, modalContent, rootModal) => {
+  if (!state.isOpen) {
     rootModal.append(modalContent);
-    MODAL_GLOBAL.classList.remove('hidden');
+    CONTAINER_ELEMENTS.modal.classList.remove('hidden');
+    state.isOpen = true;
   }
 };
 
 export const showDeliveryModal = (state) => {
   const btn = [...document.querySelectorAll('.delivery-edit')];
-  const deliveryModalContent = deliveryModal();
+  const deliveryModalContent = deliveryModal(state);
   btn.forEach((el) =>
     el.addEventListener('click', () => {
-      showModal(state.isOpen, deliveryModalContent, MODAL_CONTAINER);
+      showModal(state, deliveryModalContent, CONTAINER_ELEMENTS.modalInner);
       toggleDeliveryType();
-      updateDeliveryAddress();
     })
   );
 };
 
 export const showPaymentModal = (state) => {
   const btn = [...document.querySelectorAll('.payment-edit')];
-  const paymentModalContent = paymentCardsModal();
+  const paymentModalContent = paymentCardsModal(state);
   btn.forEach((el) =>
     el.addEventListener('click', () => {
-      showModal(state.isOpen, paymentModalContent, MODAL_CONTAINER);
-      updatePaymentCard();
+      showModal(state, paymentModalContent, CONTAINER_ELEMENTS.modalInner);
     })
   );
 };

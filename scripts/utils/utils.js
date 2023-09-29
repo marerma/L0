@@ -22,12 +22,14 @@ const checkPriceLength = (price) => {
 
 const checkStockAmount = (stock) => stock < 3;
 
+// получение продуктов, положенных в корзину, из базы данных по id
 const filterProductsInCart = (idsArray, productDb) => {
   return productDb.filter((item) =>
     idsArray.find((prod) => prod.id === item.id)
   );
 };
 
+// получение возможных дат доставки и количества продуктов в эти даты
 const getDeliveryDates = (products) => {
   return products.reduce((obj, el) => {
     const { shipping } = el;
@@ -58,6 +60,7 @@ const getDeliveryDates = (products) => {
 const getRetinaSrc = (src) => {
   return `${src.split('.')[0]}_x2.png`;
 };
+
 const formatPhone = (value) => {
   let inputValue = value.slice(0, 30).replace(/[^\d+]/g, '');
 
@@ -101,6 +104,27 @@ const findProduct = (id, db) => {
   return db.find((el) => el.id === id);
 };
 
+const toggleAllCheckedProds = (selected, products) => {
+  products.forEach((el) => (el.isChecked = selected));
+};
+
+const formatPlural = (number) => {
+  switch (number % 10) {
+    case 1:
+      return 'товар';
+    case 2:
+    case 3:
+    case 4:
+      return 'товара';
+    default:
+      return 'товаров';
+  }
+};
+
+const checkNotAvailableProds = (prodList) => {
+  return prodList.filter((prod) => prod.amount === 0);
+};
+
 export {
   createElement,
   formatPrice,
@@ -114,4 +138,7 @@ export {
   findProduct,
   getFullProductPrice,
   getRetinaSrc,
+  toggleAllCheckedProds,
+  formatPlural,
+  checkNotAvailableProds,
 };

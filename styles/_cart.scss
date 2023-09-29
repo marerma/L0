@@ -3,12 +3,12 @@
     display: grid;
     grid-template-columns: minmax(640px, 2fr) minmax(300px, 428px);
     gap: 2rem;
-    flex: 1 0 auto; 
     background-color: var(--grey-smoky);
     border-radius: 1.5rem;
     padding: 1.5rem;
     padding-bottom: 53px;
     margin: 0 auto;
+    align-items: stretch;
     @media (max-width: $small-desktop) {
       max-width: 1024px;
       grid-template-columns: minmax(400px, 2fr) minmax(200px, 300px);

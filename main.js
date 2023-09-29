@@ -1,61 +1,40 @@
 import './style.scss';
 import {
-  changeFavorite,
   renderProducts,
-} from './scripts/components/product/productList';
-import { PRODUCTS } from './scripts/mockdata/products';
-import { renderDeliveryList } from './scripts/components/delivery/deliveryList';
-import { validateCustomerData } from './scripts/customerForm';
-import {
+  renderDeliveryList,
+  changeFavorite,
   closeModal,
   showDeliveryModal,
   showPaymentModal,
-} from './scripts/components/modals/modal';
-import { changeButtonText } from './scripts/components/modals/paymentCardsModal';
-import { filterProductsInCart, getDeliveryDates } from './scripts/utils/utils';
-import {
   changeProductAmount,
   toggleSection,
-} from './scripts/components/delivery/totalSum';
+  updateSelection,
+  validateCustomerData,
+  changeSubmitButtonText,
+  deleteProduct,
+} from './scripts/components/index';
 
-const APP_STATE = {
-  isOpen: false,
-  deliveryAddress: {
-    type: 'delivery-home',
-    address: 'Бишкек, улица Табышалиева, 57',
-  },
-  totalSum: 2101063,
-  totalDiscount: 200985,
-  fullSum: 2302048,
-  totalAmount: 203,
-  productisInCartIds: [
-    { id: 1, amount: 1 },
-    { id: 2, amount: 200 },
-    { id: 3, amount: 2 },
-    { id: 4, amount: 0 },
-    { id: 5, amount: 0 },
-    { id: 6, amount: 0 },
-  ],
-  favoriteProducts: [],
-};
+import { APP_STATE } from './scripts/state';
+import { CONTAINER_ELEMENTS } from './scripts/utils/constants';
 
-const productsNode = document.getElementById('product-list');
-const productsNodeEmpty = document.getElementById('product-list_empty');
-const initialProductsList = filterProductsInCart(
-  APP_STATE.productisInCartIds,
-  PRODUCTS
+const initialProductsList = APP_STATE.getProductsInCart();
+const initialDeliveryDates = APP_STATE.deliveryDates();
+
+renderProducts(
+  CONTAINER_ELEMENTS.productsList,
+  CONTAINER_ELEMENTS.productsListAbsent,
+  initialProductsList
 );
-const initialDeliveryDates = getDeliveryDates(initialProductsList);
-renderProducts(productsNode, productsNodeEmpty, initialProductsList);
-
-const deliveryContainer = document.querySelector('#delivery-options');
-renderDeliveryList(deliveryContainer, initialDeliveryDates);
+renderDeliveryList(CONTAINER_ELEMENTS.deliveryContainer, initialDeliveryDates);
 
 changeProductAmount(APP_STATE);
+changeFavorite();
+deleteProduct(APP_STATE);
+toggleSection();
+updateSelection(APP_STATE);
+
 validateCustomerData();
-changeButtonText(APP_STATE);
+changeSubmitButtonText(APP_STATE);
 showDeliveryModal(APP_STATE);
 showPaymentModal(APP_STATE);
-toggleSection();
-changeFavorite();
-closeModal();
+closeModal(APP_STATE);

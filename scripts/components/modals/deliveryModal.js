@@ -2,9 +2,15 @@ import DELIVERY from '../../mockdata/deliveryAddresses';
 import { createElement, queryElement } from '../../utils/utils';
 import { hideModalVisibility } from './modal';
 
-export const deliveryModal = () => {
+export const deliveryModal = (state) => {
   const modalForm = createElement('form');
   modalForm.setAttribute('name', 'delivery-type');
+  modalForm.classList = 'modal-form';
+  const button = createElement('button');
+  button.classList = 'button_modal-action';
+  button.setAttribute('id', 'confirm-deliveryType');
+  button.textContent = 'Выбрать';
+  button.setAttribute('type', 'button');
 
   modalForm.innerHTML = `
   <h4 class="modal__title">Способ доставки</h4>
@@ -68,8 +74,9 @@ export const deliveryModal = () => {
       .join('')}
     </ul>
     </div>
-    <button type='button' class="button_modal-action" id="confirm-deliveryType">Выбрать</button>
   `;
+  button.addEventListener('click', () => updateDeliveryAddress(state));
+  modalForm.append(button);
   return modalForm;
 };
 
@@ -89,42 +96,54 @@ export const toggleDeliveryType = () => {
   });
 };
 
-export const updateDeliveryAddress = () => {
+function updateState(state) {
+  const form = document.forms['delivery-type'];
+  const typeInputs = form.elements['delivery-target'];
+
+  state.deliveryAddress.type = typeInputs.value;
+
+  if (typeInputs.value === 'home') {
+    const homeInputs = form.elements['delivery-home'];
+    state.deliveryAddress.address = homeInputs.value;
+  } else {
+    const officeInputs = form.elements['delivery-office'];
+    state.deliveryAddress.address = officeInputs.value;
+  }
+}
+
+function updateDeliveryUI(state) {
   const deliveryAddress = document.querySelectorAll('.delivery-address');
   const deliveryTypeInCart = queryElement('.delivery-type');
   const deliveryTypeOrderInfo = queryElement('.delivery-type_short');
-  const button = queryElement('#confirm-deliveryType');
-
-  button.addEventListener('click', () => {
-    const form = document.forms['delivery-type'];
-    const homeInputs = form.elements['delivery-home'];
-    const officeInputs = form.elements['delivery-office'];
-    const typeInputs = form.elements['delivery-target'];
-
-    if (typeInputs.value === 'home') {
-      deliveryTypeInCart.textContent = 'Доставка по адресу';
-      deliveryTypeOrderInfo.textContent = 'Адрес доставки';
-      deliveryAddress.forEach((el) => (el.textContent = homeInputs.value));
-    } else {
-      deliveryTypeInCart.textContent = 'Доставка в пункт выдачи';
-      deliveryTypeOrderInfo.textContent = 'Пункт выдачи';
-      deliveryAddress.forEach((el, ind) => {
-        el.textContent = `
-      ${officeInputs.value}
-      `;
-        if (ind === 0) {
-          el.innerHTML =
-            el.innerHTML +
-            `<div>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.69769 1.14922C6.43817 0.528396 5.56198 0.528387 5.30244 1.14919L6.69769 1.14922ZM5.30244 1.14919L4.14719 3.90977L1.19202 4.16613C0.519264 4.22467 0.262282 5.05966 0.759713 5.49464L3.00514 7.45915L2.33207 10.3824C2.18436 11.0238 2.87792 11.5567 3.46133 11.2023L6.00032 9.65611L8.53797 11.2015C9.12269 11.5588 9.81568 11.0227 9.66861 10.3826L8.99549 7.45915L11.2402 5.49537C11.7385 5.05961 11.4793 4.22519 10.8083 4.16667L7.85294 3.91029L6.69769 1.14922" fill="#FF970D"/>
-            </svg>                            
-          <span class="tertiary-text">4.99</span>
-          <span class="tertiary-text">Ежедневно с 10 до 21 </span>
-        </div>`;
-        }
-      });
+  const subtitle =
+    state.deliveryAddress.type === 'home'
+      ? 'Доставка по адресу'
+      : 'Доставка в пункт выдачи';
+  const addressText =
+    state.deliveryAddress.type === 'home' ? 'Адрес доставки' : 'Пункт выдачи';
+  deliveryTypeInCart.textContent = subtitle;
+  deliveryTypeOrderInfo.textContent = addressText;
+  deliveryAddress.forEach((el, ind) => {
+    el.textContent = `
+    ${state.deliveryAddress.address}
+    `;
+    if (ind === 0) {
+      el.innerHTML =
+        el.innerHTML +
+        `<div>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.69769 1.14922C6.43817 0.528396 5.56198 0.528387 5.30244 1.14919L6.69769 1.14922ZM5.30244 1.14919L4.14719 3.90977L1.19202 4.16613C0.519264 4.22467 0.262282 5.05966 0.759713 5.49464L3.00514 7.45915L2.33207 10.3824C2.18436 11.0238 2.87792 11.5567 3.46133 11.2023L6.00032 9.65611L8.53797 11.2015C9.12269 11.5588 9.81568 11.0227 9.66861 10.3826L8.99549 7.45915L11.2402 5.49537C11.7385 5.05961 11.4793 4.22519 10.8083 4.16667L7.85294 3.91029L6.69769 1.14922" fill="#FF970D"/>
+        </svg>
+      <span class="tertiary-text">4.99</span>
+      <span class="tertiary-text">Ежедневно с 10 до 21 </span>
+    </div>`;
     }
-    hideModalVisibility();
   });
+}
+
+export const updateDeliveryAddress = (state) => {
+  updateState(state);
+  updateDeliveryUI(state);
+  hideModalVisibility();
+  state.isOpen = false;
 };

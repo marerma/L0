@@ -1,5 +1,12 @@
 import { ProductItem } from './productItem';
-import { createElement } from '../../utils/utils';
+import {
+  checkNotAvailableProds,
+  createElement,
+  formatPlural,
+} from '../../utils/utils';
+import { updateOrderUISum } from '../delivery/totalSum';
+import { CONTAINER_ELEMENTS } from '../../utils/constants';
+import { emptyCart } from '../emptyCart';
 
 export function renderProducts(parentNode, parentNodeEmpty, products) {
   const productListHtml = [];
@@ -15,7 +22,10 @@ export function renderProducts(parentNode, parentNodeEmpty, products) {
   parentNode.append(...productListHtml);
 
   let subtitle = createElement('p', 'subtitle');
-  subtitle.textContent = `Отсутствуют · ${outOfStockProducts.length} товара`;
+  subtitle.setAttribute('id', 'outofstock-amount');
+  subtitle.textContent = `Отсутствуют · ${
+    outOfStockProducts.length
+  } ${formatPlural(outOfStockProducts.length)}`;
 
   let div = createElement('div', 'cart__outofstock');
   div.innerHTML = `<div class="cart__toggler">
@@ -38,6 +48,36 @@ export function changeFavorite() {
   for (const heart of allProducts) {
     heart.addEventListener('click', () => {
       heart.classList.toggle('product-favorite_active');
+    });
+  }
+}
+
+export function deleteProduct(state) {
+  const allProductsDelete = document.querySelectorAll('.product-delete');
+  const productsEmpySection = CONTAINER_ELEMENTS.productsListAbsent;
+  const outOfStockCount = document.getElementById('outofstock-amount');
+
+  for (const deleteIcon of allProductsDelete) {
+    const productElement = deleteIcon.closest('.product-item');
+    const productID = +productElement?.getAttribute('id') || null;
+
+    deleteIcon.addEventListener('click', () => {
+      state.productsInCartIds = state.productsInCartIds.filter(
+        (prod) => prod.id !== productID
+      );
+      state.updateSum();
+      if (!state.totalAmount) {
+        emptyCart();
+      }
+      const lengthOut = checkNotAvailableProds(state.productsInCartIds).length;
+      if (!lengthOut) {
+        productsEmpySection.style.display = 'none';
+      }
+      outOfStockCount.textContent = `Отсутствуют · ${lengthOut} ${formatPlural(
+        lengthOut
+      )}`;
+      updateOrderUISum(state);
+      productElement.remove();
     });
   }
 }
