@@ -44,7 +44,6 @@ export const updatePaymentCard = (state) => {
   const cardNumbers = document.querySelectorAll('.payment-card_number');
   const form = document.forms['payment-type'];
   const cardInputs = [...form.elements['payment-card']];
-  console.log(cardInputs);
   const checkedInput = cardInputs.find((input) => {
     return input.checked === true;
   });

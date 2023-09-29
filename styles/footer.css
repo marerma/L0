@@ -1,34 +1,37 @@
 .footer {
   flex-shrink: 0;
   padding: 1.5rem; }
-  .footer__container {
-    color: rgba(255, 255, 255, 0.7);
-    text-align: center; }
+.footer__container {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center; }
+.footer__menu-wrapper {
+  display: none; }
+@media all and (max-width: 580px) {
   .footer__menu-wrapper {
-    display: none; }
-    @media all and (max-width: var(--mobile)) {
-      .footer__menu-wrapper {
-        display: flex;
-        justify-content: center;
-        gap: calc(max(40px, 1vw));
-        justify-items: center;
-        align-items: center;
-        padding: 14px 13px;
-        background-color: var(--white); } }
-  .footer__icon {
-    width: 28px;
-    height: 28px;
-    background-image: url("./home_icon.svg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    position: relative; }
-    .footer__icon:hover {
-      cursor: pointer; }
-    .footer__icon:nth-child(2) {
-      background-image: url("./search_icon_footer.svg"); }
-    .footer__icon:nth-child(3) {
-      background-image: url("./cart_icon_pink.svg"); }
-    .footer__icon:nth-child(4) {
-      background-image: url("./favorite_icon.svg"); }
-    .footer__icon:nth-child(5) {
-      background-image: url("./profile_icon_footer.svg"); }
+    display: flex;
+    justify-content: center;
+    gap: calc(max(40px, 1vw));
+    justify-items: center;
+    align-items: center;
+    padding: 14px 13px;
+    background-color: var(--white); 
+    position: sticky;
+    bottom: 0;
+} }
+.footer__icon {
+  width: 28px;
+  height: 28px;
+  background-image: url("./home_icon.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative; }
+.footer__icon:hover {
+  cursor: pointer; }
+.footer__icon:nth-child(2) {
+  background-image: url("./search_icon_footer.svg"); }
+.footer__icon:nth-child(3) {
+  background-image: url("./cart_icon_pink.svg"); }
+.footer__icon:nth-child(4) {
+  background-image: url("./favorite_icon.svg"); }
+.footer__icon:nth-child(5) {
+  background-image: url("./profile_icon_footer.svg"); }

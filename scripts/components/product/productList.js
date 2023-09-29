@@ -56,7 +56,7 @@ export function deleteProduct(state) {
   const allProductsDelete = document.querySelectorAll('.product-delete');
   const productsEmpySection = CONTAINER_ELEMENTS.productsListAbsent;
   const outOfStockCount = document.getElementById('outofstock-amount');
-  const CART_ICON_AMOUNT = document.querySelector('.cart_total-amount');
+  const CART_ICON_AMOUNT = [...document.querySelectorAll('.cart_total-amount')];
 
   for (const deleteIcon of allProductsDelete) {
     const productElement = deleteIcon.closest('.product-item');
@@ -78,7 +78,7 @@ export function deleteProduct(state) {
         lengthOut
       )}`;
       updateOrderUISum(state);
-      CART_ICON_AMOUNT.textContent = state.totalAmount;
+      CART_ICON_AMOUNT.forEach((el) => (el.textContent = state.totalAmount));
       productElement.remove();
     });
   }

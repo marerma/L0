@@ -20,3 +20,8 @@
 
 .extra-space {
   padding-top: 14px; }
+
+@media all and (max-width: 580px) {
+  .extra-space {
+    padding-top: 8px; }
+}

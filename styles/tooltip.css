@@ -25,13 +25,13 @@
 
 .order__item_attention .tooltip {
   top: 44px; }
-@media all and (max-width: var(--small-desktop)) {
+@media all and (max-width: 1024px) {
   .order__item_attention .tooltip {
     left: -16px; } }
-@media all and (max-width: var(--tablet)) {
+@media all and (max-width: 850px) {
   .order__item_attention .tooltip {
     transform: translateX(85%) translateY(-14px); } }
-@media all and (max-width: var(--mobile)) {
+@media all and (max-width: 580px) {
   .order__item_attention .tooltip {
     transform: translateX(60%) translateY(-10px); } }
 @media all and (max-width: 484px) {

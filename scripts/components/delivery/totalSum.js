@@ -72,7 +72,7 @@ const updateAppSumUi = (
 const changeProductAmount = (state) => {
   const allMinus = [...document.querySelectorAll('.counter-icon-minus')];
   const allPlus = [...document.querySelectorAll('.counter-icon-plus')];
-  const CART_ICON_AMOUNT = queryElement('.cart_total-amount');
+  const CART_ICON_AMOUNT = [...document.querySelectorAll('.cart_total-amount')];
 
   allMinus.forEach((minus) => {
     const amount = minus.nextElementSibling;
@@ -87,7 +87,7 @@ const changeProductAmount = (state) => {
       }
       const plusIcon = minus.nextElementSibling.nextElementSibling;
       updateAppSumUi(state, id, currentProduct, product, minus, plusIcon);
-      CART_ICON_AMOUNT.textContent = state.totalAmount;
+      CART_ICON_AMOUNT.forEach((el) => (el.textContent = state.totalAmount));
       amount.textContent = currentProduct.amount;
     });
   });
@@ -106,7 +106,7 @@ const changeProductAmount = (state) => {
       }
       const minusIcon = plus.previousElementSibling.previousElementSibling;
       updateAppSumUi(state, id, currentProduct, product, minusIcon, plus);
-      CART_ICON_AMOUNT.textContent = state.totalAmount;
+      CART_ICON_AMOUNT.forEach((el) => (el.textContent = state.totalAmount));
       amount.textContent = currentProduct.amount;
     });
   });
