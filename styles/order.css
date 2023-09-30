@@ -201,6 +201,7 @@
 .order__submit-btn:disabled {
   opacity: 0.7;
   background-color: var(--grey-smoky);
+  border: 1px solid var(--grey);
   color: var(--black);
 }
 .order__submit-btn:disabled:hover {
