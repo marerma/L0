@@ -1,321 +1,503 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
-    <meta charset="UTF-8" >
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Товары и точка</title>
   </head>
   <body>
     <div id="app">
-        <header class="header">
-          <div class="header__main-block">
-            <div class="header__burger"></div>
-            <h1 class="header__logo">ТОВАРЫ И ТОЧКА</h1>
+      <header class="header">
+        <div class="header__main-block">
+          <div class="header__burger"></div>
+          <h1 class="header__logo"><a href="/">ТОВАРЫ И ТОЧКА</a></h1>
+        </div>
+        <div class="header__search">
+          <input
+            class="header__search-input"
+            type="search"
+            placeholder="Я ищу..."
+            id="search"
+            aria-label="Искать по всем товарам"
+          />
+          <button class="header__search-icon"></button>
+        </div>
+        <div class="header__customer">
+          <div class="header__icon-block">
+            <span class="header__icon-img" id="profile"></span>
+            <span class="tertiary-text">Профиль</span>
           </div>
-          <div class="header__search">
-            <input class="header__search-input" 
-                   type="search" 
-                   placeholder="Я ищу..." 
-                   id="search"
-                   aria-label="Искать по всем товарам">
-            <button class="header__search-icon"></button>
-          </div>
-          <div class="header__customer">
-            <div class="header__icon-block">
-              <span class="header__icon-img" id="profile"></span>
-              <span class="tertiary-text">Профиль</span>
+          <div class="header__icon-block">
+            <div class="header__icon-img" id="cart">
+              <p class="header__icon_count">
+                <span class="cart_total-amount">203</span>
+              </p>
             </div>
-            <div class="header__icon-block">
-              <div class="header__icon-img" id="cart">
-                <p class="header__icon_count"><span class="cart_total-amount">203</span></p>
-              </div>
-              <span class="tertiary-text">Корзина</span>
-            </div>
+            <span class="tertiary-text">Корзина</span>
           </div>
-        </header>
-        <main>
-          <form id="order-detail" name="orderDetail" class="cart__container" novalidate>
-            <div class="cart__section">
-              <section class="cart__products">
-                <h2 class="cart__title">Корзина</h2>
-                <div class="cart__toggler">
-                  <div class="cart__selection">
-                    <input type="checkbox" name="select-all" id="selected-all" checked>
-                    <label class="cart__selection-label" for="selected-all">Выбрать все</label>
-                    <p class="subtitle hidden"><span class="subtitle final-amount">206 товаров</span> · <span class="subtitle final-sum">2 100 569</span> сом</p>
-                  </div>
-                <svg class="toggle-icon available" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.3417 14.9121C16.966 15.2982 16.3477 15.3044 15.9644 14.9258L10.1418 9.17475C10.0634 9.0973 9.93715 9.09788 9.85945 9.17603L4.15281 14.9159C3.76725 15.3037 3.14293 15.3137 2.74516 14.9384C2.33549 14.552 2.32163 13.9049 2.71437 13.5012L9.28326 6.74949C9.67588 6.34593 10.3241 6.34593 10.7167 6.74949L17.3417 13.5588C17.7082 13.9355 17.7082 14.5354 17.3417 14.9121Z" fill="#9797AF"/>
-                </svg>                  
-              </div>
-              <div class="cart__product-list toggle-section" id="product-list"></div>
-              <div class="cart__product-list toggle-section" id="product-list_empty"></div>
-              </section>
-              <section class="delivery block__section">
-                <div class="delivery__title-wrapper">
-                      <h3 class="block__title">Способ доставки</h3>
-                      <p class="subtitle subtitle_bold pink delivery-edit">Изменить</p>
-                    </div>
-                    <div class="delivery__item-wrapper" id="delivery-options">
-                      <div class="delivery__item delivery__item_text">
-                        <p class="subtitle delivery-type_short">Пункт выдачи</p>
-                        <div class="delivery__content delivery-address">
-                          Бишкек, улица Ахматбека Суюмбаева, 12/1
-                          <div>
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.69769 1.14922C6.43817 0.528396 5.56198 0.528387 5.30244 1.14919L6.69769 1.14922ZM5.30244 1.14919L4.14719 3.90977L1.19202 4.16613C0.519264 4.22467 0.262282 5.05966 0.759713 5.49464L3.00514 7.45915L2.33207 10.3824C2.18436 11.0238 2.87792 11.5567 3.46133 11.2023L6.00032 9.65611L8.53797 11.2015C9.12269 11.5588 9.81568 11.0227 9.66861 10.3826L8.99549 7.45915L11.2402 5.49537C11.7385 5.05961 11.4793 4.22519 10.8083 4.16667L7.85294 3.91029L6.69769 1.14922" fill="#FF970D"/>
-                              </svg>                            
-                            <span class="tertiary-text">4.99</span>
-                            <span class="tertiary-text">Ежедневно с 10 до 21 </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="delivery__item delivery__item_text">
-                        <p class="subtitle">Стоимость доставки</p>
-                        <div class="delivery__content">
-                          Бесплатно
-                        </div>
-                      </div>
-                      <div class="delivery__back">
-                        <span class="delivery__back-icon">
-                        </span>
-                        <div class="tertiary-text">Обратная доставка товаров на склад при отказе — 
-                          <span class="tertiary-text green back-delivery">бесплатно</span>
-                          <div class="tooltip box-shadow">
-                          <p class="tooltip__text">Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p>
-                        </div>
-                        </div>  
-                      </div>
-                    </div>
-              </section>
-              <section class="payment block__section">
-                <div class="payment__title-wrapper">
-                  <h3 class="block__title">Способ оплаты</h3>
-                  <p class="subtitle subtitle_bold pink payment-edit">Изменить</p>
+        </div>
+      </header>
+      <main>
+        <form
+          id="order-detail"
+          name="orderDetail"
+          class="cart__container"
+          novalidate
+        >
+          <div class="cart__section">
+            <section class="cart__products">
+              <h2 class="cart__title">Корзина</h2>
+              <div class="cart__toggler">
+                <div class="cart__selection">
+                  <input
+                    type="checkbox"
+                    name="select-all"
+                    id="selected-all"
+                    checked
+                  />
+                  <label class="cart__selection-label" for="selected-all"
+                    >Выбрать все</label
+                  >
+                  <p class="subtitle hidden">
+                    <span class="subtitle final-amount">203 товара</span> ·
+                    <span class="subtitle final-sum">2 101 016</span> сом
+                  </p>
                 </div>
-                <div class="payment__item-wrapper extra-space " data-payment="payment-options">
+                <svg
+                  class="toggle-icon available"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.3417 14.9121C16.966 15.2982 16.3477 15.3044 15.9644 14.9258L10.1418 9.17475C10.0634 9.0973 9.93715 9.09788 9.85945 9.17603L4.15281 14.9159C3.76725 15.3037 3.14293 15.3137 2.74516 14.9384C2.33549 14.552 2.32163 13.9049 2.71437 13.5012L9.28326 6.74949C9.67588 6.34593 10.3241 6.34593 10.7167 6.74949L17.3417 13.5588C17.7082 13.9355 17.7082 14.5354 17.3417 14.9121Z"
+                    fill="#9797AF"
+                  />
+                </svg>
+              </div>
+              <div
+                class="cart__product-list toggle-section"
+                id="product-list"
+              ></div>
+              <div
+                class="cart__product-list toggle-section"
+                id="product-list_empty"
+              ></div>
+            </section>
+            <section class="delivery block__section">
+              <div class="delivery__title-wrapper">
+                <h3 class="block__title">Способ доставки</h3>
+                <p class="subtitle subtitle_bold pink delivery-edit">
+                  Изменить
+                </p>
+              </div>
+              <div class="delivery__item-wrapper" id="delivery-options">
+                <div class="delivery__item delivery__item_text">
+                  <p class="subtitle delivery-type_short">Пункт выдачи</p>
+                  <div class="delivery__content delivery-address">
+                    Бишкек, улица Ахматбека Суюмбаева, 12/1
+                    <div>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M6.69769 1.14922C6.43817 0.528396 5.56198 0.528387 5.30244 1.14919L6.69769 1.14922ZM5.30244 1.14919L4.14719 3.90977L1.19202 4.16613C0.519264 4.22467 0.262282 5.05966 0.759713 5.49464L3.00514 7.45915L2.33207 10.3824C2.18436 11.0238 2.87792 11.5567 3.46133 11.2023L6.00032 9.65611L8.53797 11.2015C9.12269 11.5588 9.81568 11.0227 9.66861 10.3826L8.99549 7.45915L11.2402 5.49537C11.7385 5.05961 11.4793 4.22519 10.8083 4.16667L7.85294 3.91029L6.69769 1.14922"
+                          fill="#FF970D"
+                        />
+                      </svg>
+                      <span class="tertiary-text">4.99</span>
+                      <span class="tertiary-text">Ежедневно с 10 до 21 </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="delivery__item delivery__item_text">
+                  <p class="subtitle">Стоимость доставки</p>
+                  <div class="delivery__content">Бесплатно</div>
+                </div>
+                <div class="delivery__back">
+                  <span class="delivery__back-icon"> </span>
+                  <div class="tertiary-text">
+                    Обратная доставка товаров на склад при отказе —
+                    <span class="tertiary-text green back-delivery"
+                      >бесплатно</span
+                    >
+                    <div class="tooltip box-shadow">
+                      <p class="tooltip__text">
+                        Если товары вам не подойдут, мы вернем их обратно на
+                        склад — это бесплатно
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="payment block__section">
+              <div class="payment__title-wrapper">
+                <h3 class="block__title">Способ оплаты</h3>
+                <p class="subtitle subtitle_bold pink payment-edit">Изменить</p>
+              </div>
+              <div
+                class="payment__item-wrapper extra-space"
+                data-payment="payment-options"
+              >
                 <div class="payment__card-number-wrapper">
+                  <span class="payment-card_icon">
+                    <svg
+                      width="30"
+                      height="10"
+                      viewBox="0 0 30 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M16.6811 1.84371L14.8643 5.75824H14.6805V1.00024H12.0851V9.00233H14.2371C14.8211 9.00233 15.3402 8.6671 15.5889 8.14805L17.4165 4.24433H17.6004V9.00233H20.1958V1.00024H18.0113C17.449 1.00024 16.9191 1.33547 16.6811 1.84371Z"
+                        fill="#319B42"
+                      />
+                      <path
+                        d="M6.97243 2.04917L5.90182 5.75824H5.71798L4.63656 2.04917C4.45271 1.42198 3.87956 1.00024 3.2307 1.00024H0.667725V9.00233H3.26315V4.24433H3.44699L4.93935 9.00233H6.66963L8.162 4.24433H8.34584V9.00233H10.9413V1.00024H8.37829C7.72943 1.00024 7.14546 1.42198 6.97243 2.04917Z"
+                        fill="#319B42"
+                      />
+                      <path
+                        d="M21.3243 4.56733V9.00233H23.9206V6.40623H26.7115C27.9231 6.40623 28.9508 5.63822 29.3294 4.56733H21.3243Z"
+                        fill="#319B42"
+                      />
+                      <path
+                        d="M26.6357 1.00024H20.859C21.216 2.90405 22.8819 4.24537 24.8832 4.24537H29.3725C29.405 4.07229 29.4266 3.87758 29.4266 3.68288C29.4266 2.13604 28.1826 1.00024 26.6357 1.00024Z"
+                        fill="url(#paint0_linear_7_1409)"
+                      />
+                      <defs>
+                        <linearGradient
+                          id="paint0_linear_7_1409"
+                          x1="20.859"
+                          y1="2.6228"
+                          x2="29.4266"
+                          y2="2.6228"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#00A3E1" />
+                          <stop offset="0.3042" stop-color="#009ADD" />
+                          <stop offset="0.7987" stop-color="#0082D4" />
+                          <stop offset="1" stop-color="#0076CF" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </span>
+                  <span class="payment-card_number"> 1234 56•• •••• 1234</span
+                  ><span>01/30</span>
+                </div>
+                <span class="tertiary-text grey pay-immediate_notice"
+                  >Спишем оплату с карты при получении</span
+                >
+              </div>
+            </section>
+            <section class="customer block__section">
+              <div class="delivery__title-wrapper">
+                <h3 class="block__title">Получатель</h3>
+              </div>
+              <div class="customer-details__wrapper">
+                <div class="customer-details__item">
+                  <input
+                    type="text"
+                    id="firstname"
+                    name="firstname"
+                    class="customer__input"
+                    required
+                    autocomplete="off"
+                  />
+                  <label
+                    for="firstname"
+                    class="floating-label primary-text grey"
+                    >Имя</label
+                  >
+                  <p class="customer__input_error error-text"></p>
+                </div>
+                <div class="customer-details__item">
+                  <input
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    class="customer__input"
+                    required
+                    autocomplete="off"
+                  />
+                  <label for="lastname" class="floating-label primary-text grey"
+                    >Фамилия</label
+                  >
+                  <p class="customer__input_error error-text"></p>
+                </div>
+                <div class="customer-details__item">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="customer__input"
+                    required
+                    autocomplete="off"
+                  />
+                  <label for="email" class="floating-label primary-text grey"
+                    >Почта</label
+                  >
+                  <p class="customer__input_error error-text"></p>
+                </div>
+                <div class="customer-details__item">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="customer__input primary-text"
+                    required
+                    autocomplete="off"
+                  />
+                  <label for="phone" class="floating-label primary-text grey"
+                    >Телефон</label
+                  >
+                  <p class="customer__input_error error-text"></p>
+                </div>
+                <div class="customer-details__item">
+                  <input
+                    type="text"
+                    id="inn"
+                    name="inn"
+                    maxlength="14"
+                    class="customer__input"
+                    required
+                    autocomplete="off"
+                  />
+                  <label for="inn" class="floating-label primary-text grey"
+                    >ИНН</label
+                  >
+                  <p class="customer__input_error error-text black">
+                    Для таможенного оформления
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="cart__section">
+            <section class="order-info block__section box-shadow" id="order">
+              <div class="order__title-wrapper">
+                <h3 class="block__title">Итого</h3>
+                <p class="block__title-small">
+                  <span class="block__title final-sum">2 101 016</span> сом
+                </p>
+              </div>
+              <div class="order__short-info">
+                <div class="order__short-item">
+                  <p class="order__item-content final-amount">203 товара</p>
+                  <p class="order__item-content final-fullSum">2 302 001 сом</p>
+                </div>
+                <div class="order__short-item">
+                  <p class="order__item-content">Скидка</p>
+                  <p class="order__item-content final-discountSum">
+                    −200 985 сом
+                  </p>
+                </div>
+                <div class="order__short-item">
+                  <p class="order__item-content">Доставка</p>
+                  <p class="order__item-content">Бесплатно</p>
+                </div>
+              </div>
+              <div class="order__item-block" data-order="delivery">
+                <div class="order__title-wrapper">
+                  <p class="subtitle subtitle_bold delivery-type">
+                    Доставка в пункт выдачи
+                  </p>
+                  <span class="order__item-edit delivery-edit">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M11.1585 1.05991L14.9401 4.84154L4.72705 15.0546L0.735435 15.8529C0.385575 15.9229 0.0771149 15.6144 0.147087 15.2646L0.94541 11.273L11.1585 1.05991ZM2.17707 11.9321L11.1585 2.95072L13.0493 4.84154L4.06789 13.8229L1.70436 14.2956L2.17707 11.9321Z"
+                        fill="#CB11AB"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M13.9948 5.78715L10.2132 2.00552L11.6313 0.587402C12.4145 -0.195801 13.6843 -0.195801 14.4675 0.587402L15.4129 1.53281C16.1961 2.31601 16.1961 3.58584 15.4129 4.36904L13.9948 5.78715ZM14.4675 3.42363C14.7286 3.16256 14.7286 2.73929 14.4675 2.47822L13.5221 1.53281C13.261 1.27174 12.8378 1.27174 12.5767 1.53281L12.104 2.00552L13.9948 3.89634L14.4675 3.42363Z"
+                        fill="#CB11AB"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <p class="tertiary-text delivery-address">
+                  Бишкек, улица Ахматбека Суюмбаева, 12/1
+                </p>
+                <p class="tertiary-text pink">5-6 фев</p>
+                <div class="order__item-text order__item_attention">
+                  <span class="delivery__back-icon"></span>
+                  <div class="tertiary-text">
+                    Обратная доставка товаров на склад при отказе —
+                    <span class="tertiary-text green back-delivery"
+                      >бесплатно</span
+                    >
+                    <div class="tooltip box-shadow">
+                      <p class="tooltip__text">
+                        Если товары вам не подойдут, мы вернем их обратно на
+                        склад — это бесплатно
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="order__item-block" data-order="card">
+                <div class="order__title-wrapper">
+                  <p class="subtitle subtitle_bold">Оплата картой</p>
+                  <span class="order__item-edit payment-edit">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M11.1585 1.05991L14.9401 4.84154L4.72705 15.0546L0.735435 15.8529C0.385575 15.9229 0.0771149 15.6144 0.147087 15.2646L0.94541 11.273L11.1585 1.05991ZM2.17707 11.9321L11.1585 2.95072L13.0493 4.84154L4.06789 13.8229L1.70436 14.2956L2.17707 11.9321Z"
+                        fill="#CB11AB"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M13.9948 5.78715L10.2132 2.00552L11.6313 0.587402C12.4145 -0.195801 13.6843 -0.195801 14.4675 0.587402L15.4129 1.53281C16.1961 2.31601 16.1961 3.58584 15.4129 4.36904L13.9948 5.78715ZM14.4675 3.42363C14.7286 3.16256 14.7286 2.73929 14.4675 2.47822L13.5221 1.53281C13.261 1.27174 12.8378 1.27174 12.5767 1.53281L12.104 2.00552L13.9948 3.89634L14.4675 3.42363Z"
+                        fill="#CB11AB"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div>
+                  <div
+                    class="payment__item-wrapper"
+                    data-order="payment-options"
+                  >
                     <span class="payment-card_icon">
-                      <svg width="30" height="10" viewBox="0 0 30 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.6811 1.84371L14.8643 5.75824H14.6805V1.00024H12.0851V9.00233H14.2371C14.8211 9.00233 15.3402 8.6671 15.5889 8.14805L17.4165 4.24433H17.6004V9.00233H20.1958V1.00024H18.0113C17.449 1.00024 16.9191 1.33547 16.6811 1.84371Z" fill="#319B42"/>
-                        <path d="M6.97243 2.04917L5.90182 5.75824H5.71798L4.63656 2.04917C4.45271 1.42198 3.87956 1.00024 3.2307 1.00024H0.667725V9.00233H3.26315V4.24433H3.44699L4.93935 9.00233H6.66963L8.162 4.24433H8.34584V9.00233H10.9413V1.00024H8.37829C7.72943 1.00024 7.14546 1.42198 6.97243 2.04917Z" fill="#319B42"/>
-                        <path d="M21.3243 4.56733V9.00233H23.9206V6.40623H26.7115C27.9231 6.40623 28.9508 5.63822 29.3294 4.56733H21.3243Z" fill="#319B42"/>
-                        <path d="M26.6357 1.00024H20.859C21.216 2.90405 22.8819 4.24537 24.8832 4.24537H29.3725C29.405 4.07229 29.4266 3.87758 29.4266 3.68288C29.4266 2.13604 28.1826 1.00024 26.6357 1.00024Z" fill="url(#paint0_linear_7_1409)"/>
+                      <svg
+                        width="30"
+                        height="10"
+                        viewBox="0 0 30 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M16.6811 1.84371L14.8643 5.75824H14.6805V1.00024H12.0851V9.00233H14.2371C14.8211 9.00233 15.3402 8.6671 15.5889 8.14805L17.4165 4.24433H17.6004V9.00233H20.1958V1.00024H18.0113C17.449 1.00024 16.9191 1.33547 16.6811 1.84371Z"
+                          fill="#319B42"
+                        />
+                        <path
+                          d="M6.97243 2.04917L5.90182 5.75824H5.71798L4.63656 2.04917C4.45271 1.42198 3.87956 1.00024 3.2307 1.00024H0.667725V9.00233H3.26315V4.24433H3.44699L4.93935 9.00233H6.66963L8.162 4.24433H8.34584V9.00233H10.9413V1.00024H8.37829C7.72943 1.00024 7.14546 1.42198 6.97243 2.04917Z"
+                          fill="#319B42"
+                        />
+                        <path
+                          d="M21.3243 4.56733V9.00233H23.9206V6.40623H26.7115C27.9231 6.40623 28.9508 5.63822 29.3294 4.56733H21.3243Z"
+                          fill="#319B42"
+                        />
+                        <path
+                          d="M26.6357 1.00024H20.859C21.216 2.90405 22.8819 4.24537 24.8832 4.24537H29.3725C29.405 4.07229 29.4266 3.87758 29.4266 3.68288C29.4266 2.13604 28.1826 1.00024 26.6357 1.00024Z"
+                          fill="url(#paint0_linear_7_1409)"
+                        />
                         <defs>
-                          <linearGradient id="paint0_linear_7_1409" x1="20.859" y1="2.6228" x2="29.4266" y2="2.6228" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00A3E1"/>
-                            <stop offset="0.3042" stop-color="#009ADD"/>
-                            <stop offset="0.7987" stop-color="#0082D4"/>
-                            <stop offset="1" stop-color="#0076CF"/>
+                          <linearGradient
+                            id="paint0_linear_7_1409"
+                            x1="20.859"
+                            y1="2.6228"
+                            x2="29.4266"
+                            y2="2.6228"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stop-color="#00A3E1" />
+                            <stop offset="0.3042" stop-color="#009ADD" />
+                            <stop offset="0.7987" stop-color="#0082D4" />
+                            <stop offset="1" stop-color="#0076CF" />
                           </linearGradient>
                         </defs>
                       </svg>
                     </span>
-                  <span class="payment-card_number"> 1234 56•• •••• 1234</span><span>01/30</span>
-                </div>
-                  <span class="tertiary-text grey pay-immediate_notice">Спишем оплату с карты при получении</span>
-                </div>
-              </section>
-              <section class="customer block__section">
-                <div class="delivery__title-wrapper">
-                  <h3 class="block__title">Получатель</h3>
-                </div>
-                <div class="customer-details__wrapper">
-                  <div class="customer-details__item">
-                    <input 
-                      type="text" 
-                      id="firstname"
-                      name="firstname"
-                      class="customer__input" 
-                      required
-                      autocomplete="off" 
-                      >
-                      <label 
-                        for="firstname"
-                        class="floating-label primary-text grey">Имя</label>
-                      <p class="customer__input_error error-text"></p>
-                    </div>
-                  <div class="customer-details__item">
-                    <input 
-                      type="text" 
-                      id="lastname" 
-                      name="lastname" 
-                      class="customer__input"
-                      required 
-                      autocomplete="off" 
-                      >
-                      <label 
-                        for="lastname"
-                        class="floating-label primary-text grey">Фамилия</label>
-                      <p class="customer__input_error error-text"></p>
-                    </div>
-                  <div class="customer-details__item">
-                    <input 
-                      type="email" 
-                      id="email" 
-                      name="email" 
-                      class="customer__input" 
-                      required
-                      autocomplete="off" 
-                      >
-                      <label 
-                        for="email"
-                        class="floating-label primary-text grey">Почта</label>
-                      <p class="customer__input_error error-text"></p>
-                  </div>
-                  <div class="customer-details__item">
-                    <input 
-                      type="tel" 
-                      id="phone" 
-                      name="phone" 
-                      class="customer__input primary-text" 
-                      required
-                      autocomplete="off" 
-                      >
-                      <label 
-                        for="phone"
-                        class="floating-label primary-text grey">Телефон</label>
-                      <p class="customer__input_error error-text"></p>
-                  </div>
-                  <div class="customer-details__item">
-                    <input 
-                      type="text" 
-                      id="inn" 
-                      name="inn"
-                      maxlength="14"
-                      class="customer__input" 
-                      required
-                      autocomplete="off" 
-                      >
-                      <label 
-                        for="inn"
-                        class="floating-label primary-text grey">ИНН</label>
-                      <p class="customer__input_error error-text black">Для таможенного оформления</p>
-                  </div>
-                </div>
-              </section>
-            </div>
-            <div class="cart__section">
-              <section class="order-info block__section box-shadow" id="order">
-                <div class="order__title-wrapper">
-                  <h3 class="block__title">Итого</h3>
-                  <p class="block__title-small"><span class="block__title final-sum">2 101 063</span> сом</p>
-                </div>
-                <div class="order__short-info">
-                  <div class="order__short-item">
-                    <p class="order__item-content final-amount">203 товара</p>
-                    <p class="order__item-content final-fullSum">2 302 048 сом</p>
-                  </div>
-                  <div class="order__short-item">
-                    <p class="order__item-content">Скидка</p>
-                    <p class="order__item-content final-discountSum"> −200 985 сом</p>
-                  </div>
-                  <div class="order__short-item">
-                    <p class="order__item-content">Доставка</p>
-                    <p class="order__item-content">Бесплатно</p>
-                  </div>
-                </div>
-                <div class="order__item-block" data-order="delivery">
-                  <div class="order__title-wrapper">
-                    <p class="subtitle subtitle_bold delivery-type">Доставка в пункт выдачи 
-                    </p>
-                    <span class="order__item-edit delivery-edit">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.1585 1.05991L14.9401 4.84154L4.72705 15.0546L0.735435 15.8529C0.385575 15.9229 0.0771149 15.6144 0.147087 15.2646L0.94541 11.273L11.1585 1.05991ZM2.17707 11.9321L11.1585 2.95072L13.0493 4.84154L4.06789 13.8229L1.70436 14.2956L2.17707 11.9321Z" fill="#CB11AB"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9948 5.78715L10.2132 2.00552L11.6313 0.587402C12.4145 -0.195801 13.6843 -0.195801 14.4675 0.587402L15.4129 1.53281C16.1961 2.31601 16.1961 3.58584 15.4129 4.36904L13.9948 5.78715ZM14.4675 3.42363C14.7286 3.16256 14.7286 2.73929 14.4675 2.47822L13.5221 1.53281C13.261 1.27174 12.8378 1.27174 12.5767 1.53281L12.104 2.00552L13.9948 3.89634L14.4675 3.42363Z" fill="#CB11AB"/>
-                      </svg>                  
+                    <span class="tertiary-text payment-card_number">
+                      1234 56•• •••• 1234
                     </span>
                   </div>
-                  <p class="tertiary-text delivery-address">Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
-                  <p class="tertiary-text pink">5-6 фев</p>
-                  <div class="order__item-text order__item_attention">
-                      <span class="delivery__back-icon"></span>
-                      <div class="tertiary-text">Обратная доставка товаров на склад при отказе — 
-                        <span class="tertiary-text green back-delivery">бесплатно</span>
-                        <div class="tooltip box-shadow">
-                          <p class="tooltip__text">Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-                <div class="order__item-block" data-order="card">
-                  <div class="order__title-wrapper">
-                    <p class="subtitle subtitle_bold">Оплата картой
+                  <div class="order__item_attention">
+                    <div class="order__checkbox-wrapper">
+                      <input type="checkbox" id="pay-immediate" />
+                      <label for="pay-immediate" class="tertiary-text">
+                        Списать оплату сразу</label
+                      >
+                    </div>
+                    <p class="tertiary-text pay-immediate_notice">
+                      Спишем оплату с карты при получении
                     </p>
-                    <span class="order__item-edit payment-edit">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.1585 1.05991L14.9401 4.84154L4.72705 15.0546L0.735435 15.8529C0.385575 15.9229 0.0771149 15.6144 0.147087 15.2646L0.94541 11.273L11.1585 1.05991ZM2.17707 11.9321L11.1585 2.95072L13.0493 4.84154L4.06789 13.8229L1.70436 14.2956L2.17707 11.9321Z" fill="#CB11AB"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9948 5.78715L10.2132 2.00552L11.6313 0.587402C12.4145 -0.195801 13.6843 -0.195801 14.4675 0.587402L15.4129 1.53281C16.1961 2.31601 16.1961 3.58584 15.4129 4.36904L13.9948 5.78715ZM14.4675 3.42363C14.7286 3.16256 14.7286 2.73929 14.4675 2.47822L13.5221 1.53281C13.261 1.27174 12.8378 1.27174 12.5767 1.53281L12.104 2.00552L13.9948 3.89634L14.4675 3.42363Z" fill="#CB11AB"/>
-                      </svg>                  
-                    </span>
-                  </div>
-                  <div>
-                    <div class="payment__item-wrapper" data-order="payment-options">
-                      <span class="payment-card_icon">
-                          <svg width="30" height="10" viewBox="0 0 30 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.6811 1.84371L14.8643 5.75824H14.6805V1.00024H12.0851V9.00233H14.2371C14.8211 9.00233 15.3402 8.6671 15.5889 8.14805L17.4165 4.24433H17.6004V9.00233H20.1958V1.00024H18.0113C17.449 1.00024 16.9191 1.33547 16.6811 1.84371Z" fill="#319B42"/>
-                            <path d="M6.97243 2.04917L5.90182 5.75824H5.71798L4.63656 2.04917C4.45271 1.42198 3.87956 1.00024 3.2307 1.00024H0.667725V9.00233H3.26315V4.24433H3.44699L4.93935 9.00233H6.66963L8.162 4.24433H8.34584V9.00233H10.9413V1.00024H8.37829C7.72943 1.00024 7.14546 1.42198 6.97243 2.04917Z" fill="#319B42"/>
-                            <path d="M21.3243 4.56733V9.00233H23.9206V6.40623H26.7115C27.9231 6.40623 28.9508 5.63822 29.3294 4.56733H21.3243Z" fill="#319B42"/>
-                            <path d="M26.6357 1.00024H20.859C21.216 2.90405 22.8819 4.24537 24.8832 4.24537H29.3725C29.405 4.07229 29.4266 3.87758 29.4266 3.68288C29.4266 2.13604 28.1826 1.00024 26.6357 1.00024Z" fill="url(#paint0_linear_7_1409)"/>
-                            <defs>
-                            <linearGradient id="paint0_linear_7_1409" x1="20.859" y1="2.6228" x2="29.4266" y2="2.6228" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00A3E1"/>
-                            <stop offset="0.3042" stop-color="#009ADD"/>
-                            <stop offset="0.7987" stop-color="#0082D4"/>
-                            <stop offset="1" stop-color="#0076CF"/>
-                            </linearGradient>
-                            </defs>
-                          </svg>
-                        </span>
-                        <span class="tertiary-text payment-card_number">
-                        1234 56•• •••• 1234
-                      </span>
-                    </div>
-                    <div class="order__item_attention">
-                      <div class="order__checkbox-wrapper">
-                        <input type="checkbox" id="pay-immediate">
-                        <label for="pay-immediate" class="tertiary-text">
-                        Списать оплату сразу</label>
-                      </div>
-                      <p class="tertiary-text pay-immediate_notice">Спишем оплату с карты при получении</p>
-                    </div>
                   </div>
                 </div>
-                <button type="submit" class="order__submit-btn button subtitle subtitle_bold">Заказать</button>
-                <div class="order__rules-wrapper">
-                  <p class="checkbox-hack">
-                  <p class="tertiary-text">Соглашаюсь 
-                    <a href="https://www.wildberries.ru/services/pravila-polzovaniya-torgovoy-ploshchadkoy" 
-                        target="_blank" rel="noopener noreferrer">с правилами пользования торговой площадкой</a> и 
-                        <a href="https://www.wildberries.ru/services/vozvrat-tovara" target="_blank" rel="noopener noreferrer">возврата</a></p>
-                </div>
-              </section>
-            </div>
-          </form>
-        </main>
-        <footer class="footer">
-          <div class="footer__container">
-            <p class="footer__credentials tertiary-text">© 2022  ООО «Товары и точка»</p>
+              </div>
+              <button
+                type="submit"
+                class="order__submit-btn button subtitle subtitle_bold"
+              >
+                Заказать
+              </button>
+              <div class="order__rules-wrapper">
+                <p class="checkbox-hack"></p>
+                <p class="tertiary-text">
+                  Соглашаюсь
+                  <a
+                    href="https://www.wildberries.ru/services/pravila-polzovaniya-torgovoy-ploshchadkoy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >с правилами пользования торговой площадкой</a
+                  >
+                  и 
+                  <a
+                    href="https://www.wildberries.ru/services/vozvrat-tovara"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >возврата</a
+                  >
+                </p>
+              </div>
+            </section>
           </div>
-        </footer>
-        <div class="footer__menu-wrapper">
-          <div class="footer__icon"></div>
-          <div class="footer__icon"></div>
-          <div class="footer__icon">
-            <p class="header__icon_count"><span class="cart_total-amount">203</span></p>
-          </div>
-          <div class="footer__icon"></div>
-          <div class="footer__icon"></div>
+        </form>
+      </main>
+      <footer class="footer">
+        <div class="footer__container">
+          <p class="footer__credentials tertiary-text">
+            © 2022 ООО «Товары и точка»
+          </p>
         </div>
-        <div class="modal hidden">
-          <div class="modal__wrapper">
-            <div class="modal__content" id="modal-container">
-              <span class="modal__close-icon"></span>
-            </div>
+      </footer>
+      <div class="footer__menu-wrapper">
+        <div class="footer__icon"><a href="/"></a></div>
+        <div class="footer__icon"></div>
+        <div class="footer__icon">
+          <p class="header__icon_count">
+            <span class="cart_total-amount">203</span>
+          </p>
+        </div>
+        <div class="footer__icon"></div>
+        <div class="footer__icon"></div>
+      </div>
+      <div class="modal hidden">
+        <div class="modal__wrapper">
+          <div class="modal__content" id="modal-container">
+            <span class="modal__close-icon"></span>
           </div>
         </div>
+      </div>
     </div>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/scripts/index.js"></script>
   </body>
 </html>

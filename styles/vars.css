@@ -6,7 +6,7 @@
   --black: #000000;
   --grey: #9797af;
   --grey-smoky: #f6f6fa;
-  --smoky-dark: #F0ECF4;
+  --smoky-dark: #f0ecf4;
   --green: #0cd38b;
   --light-orange: #ff970d;
   --coral: #ff3b30;
@@ -16,4 +16,3 @@
   --grey-border: rgba(255, 255, 255, 0.45);
   --grey-modal: rgba(5, 0, 10, 0.3);
 }
-

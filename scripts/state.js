@@ -5,9 +5,9 @@ import { findProduct, getDeliveryDates } from './utils/utils';
 const APP_STATE = {
   isOpen: false,
   products: PRODUCTS,
-  totalSum: 2101063,
+  totalSum: 2101016,
   totalDiscount: 200985,
-  fullSum: 2302048,
+  fullSum: 2302001,
   totalAmount: 203,
   productsInCartIds: [
     { id: 1, amount: 1, isChecked: true },
@@ -26,13 +26,13 @@ const APP_STATE = {
       })
     );
   },
-  deliveryDates() {
+  getDeliveryInfo() {
     const filteredProds = this.getProductsInCart(true);
     return getDeliveryDates(filteredProds);
   },
   deliveryAddress: {
-    type: 'home',
-    address: 'Бишкек, улица Табышалиева, 57',
+    type: 'office',
+    address: 'г. Бишкек, улица Ахматбека Суюмбаева, 12/1',
   },
   savedCards: CARD_NUMBERS,
   updateSum() {
@@ -54,6 +54,7 @@ const APP_STATE = {
     this.fullSum = sum.full;
     this.totalDiscount = sum.discount;
   },
+  payImmediate: false,
 };
 
 export { APP_STATE };

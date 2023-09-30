@@ -1,18 +1,23 @@
 .order__short-info {
   margin-top: 5px;
-  margin-bottom: 25px; }
-@media  all and (max-width: 580px) {
+  margin-bottom: 25px;
+}
+@media all and (max-width: 580px) {
   .order__short-info {
-    margin-bottom: 20px; } }
+    margin-bottom: 20px;
+  }
+}
 
 .order__title-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+}
 
 .order__short-item {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+}
 
 .order__item_attention {
   position: relative;
@@ -20,37 +25,51 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
   padding-bottom: 10px;
-  margin-top: 18px; }
+  margin-top: 18px;
+}
 .order__item_attention .delivery__back-icon {
   margin-top: 2px;
-  flex: 1 0 22px; }
-@media  all and (max-width: 850px) {
+  flex: 1 0 22px;
+}
+@media all and (max-width: 850px) {
   .order__item_attention .delivery__back-icon {
-    flex: 0 0 22px; } }
+    flex: 0 0 22px;
+  }
+}
 
 .order__item-text {
-  display: flex; }
+  display: flex;
+}
 
 .order__item-block {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem;
+}
 .order__item-block > p.tertiary-text:first-of-type {
-  padding-top: 6px; }
-@media  all and (max-width: 580px) {
+  padding-top: 6px;
+}
+@media all and (max-width: 580px) {
   .order__item-block {
-    margin-bottom: 18px; } }
+    margin-bottom: 18px;
+  }
+}
 
 .order__item-edit {
-  display: inline-flex; }
+  display: inline-flex;
+}
 .order__item-edit:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 .order__rules-wrapper {
-  display: flex; }
+  display: flex;
+}
 .order__rules-wrapper a {
   text-decoration: underline;
   color: inherit;
-  text-decoration-color: var(--grey-divider); }
+  text-decoration-color: var(--grey-divider);
+}
 .order__rules-wrapper a:hover {
-  color: var(--pink); }
+  color: var(--pink);
+}
 
 @media all and (max-width: 1024px) {
   .order__rules-wrapper {
@@ -61,13 +80,15 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 6px; }
+  margin-bottom: 6px;
+}
 .order__checkbox-wrapper label:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .checkbox-hack {
   flex: 1 0 22px;
-  background: url("/hack_icon_black.svg") no-repeat center;
+  background: url('/hack_icon_black.svg') no-repeat center;
   background-position: 10% -50%;
   width: 22px;
   height: 22px;
@@ -75,46 +96,59 @@
   color: black;
   border: none;
   padding: 0;
-  margin-right: -2px; }
-@media  all and (max-width: 850px) {
+  margin-right: -2px;
+}
+@media all and (max-width: 850px) {
   .checkbox-hack {
-    flex: 0 0 22px; } }
+    flex: 0 0 22px;
+  }
+}
 
 #order {
   padding-top: 16px;
   position: sticky;
-  top: 10px; 
+  top: 10px;
 }
-@media  all and (max-width: 580px) {
+@media all and (max-width: 580px) {
   #order {
     padding-top: 18px;
     position: relative;
-    top: 0px; 
+    top: 0px;
   }
 }
 .box-shadow {
   border-radius: 16px;
-  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.3), 0px 2px 10px 0px rgba(0, 0, 0, 0.15); }
-@media  all and (max-width: 580px) {
+  box-shadow:
+    0px 0px 1px 0px rgba(0, 0, 0, 0.3),
+    0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+}
+@media all and (max-width: 580px) {
   .box-shadow#order {
-    box-shadow: none; } }
+    box-shadow: none;
+  }
+}
 
-@media  all and (max-width: 580px) {
+@media all and (max-width: 580px) {
   [data-order='delivery'] .order__title-wrapper,
   [data-order='delivery'] > p,
   [data-order='card'] .order__title-wrapper,
   [data-order='card'] > p {
-    display: none; } }
+    display: none;
+  }
+}
 
 @media all and (max-width: 580px) {
   [data-order='payment-options'] {
-    display: none; } 
+    display: none;
+  }
 }
 
 .back-delivery {
-  border-bottom: 1px dashed var(--green); }
-  .back-delivery:hover {
-    cursor: pointer; }
+  border-bottom: 1px dashed var(--green);
+}
+.back-delivery:hover {
+  cursor: pointer;
+}
 
 .button {
   all: unset;
@@ -144,7 +178,6 @@
   cursor: default;
 }
 
-
 .order__submit-btn {
   all: unset;
   width: 100%;
@@ -158,18 +191,23 @@
   margin-bottom: 0.75rem;
   margin-top: 1px;
   opacity: 1;
-  transition: all ease 0.5; }
+  transition: all ease 0.5;
+}
 .order__submit-btn:hover {
   cursor: pointer;
   opacity: 0.7;
-  transition: all ease 0.5; }
+  transition: all ease 0.5;
+}
 .order__submit-btn:disabled {
   opacity: 0.7;
   background-color: var(--grey-smoky);
-  color: var(--black); }
+  color: var(--black);
+}
 .order__submit-btn:disabled:hover {
-  cursor: default; }
-@media  all and (max-width: 580px) {
+  cursor: default;
+}
+@media all and (max-width: 580px) {
   .order__submit-btn {
-    margin-top: 8px; } }
-
+    margin-top: 8px;
+  }
+}

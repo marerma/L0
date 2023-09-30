@@ -1,12 +1,14 @@
 import { ProductItem } from './productItem';
 import {
-  checkNotAvailableProds,
+  checkAvailableProds,
   createElement,
   formatPlural,
+  getProdsCountinCart,
 } from '../../utils/utils';
-import { updateOrderUISum } from '../delivery/totalSum';
+import { updateOrderUISum } from '../totalSum';
 import { CONTAINER_ELEMENTS } from '../../utils/constants';
 import { emptyCart } from '../emptyCart';
+import { updateDeliveryList } from '../delivery/deliveryList';
 
 export function renderProducts(parentNode, parentNodeEmpty, products) {
   const productListHtml = [];
@@ -43,15 +45,6 @@ export function renderProducts(parentNode, parentNodeEmpty, products) {
   }
 }
 
-export function changeFavorite() {
-  const allProducts = document.querySelectorAll('.product-favorite');
-  for (const heart of allProducts) {
-    heart.addEventListener('click', () => {
-      heart.classList.toggle('product-favorite_active');
-    });
-  }
-}
-
 export function deleteProduct(state) {
   const allProductsDelete = document.querySelectorAll('.product-delete');
   const productsEmpySection = CONTAINER_ELEMENTS.productsListAbsent;
@@ -67,18 +60,32 @@ export function deleteProduct(state) {
         (prod) => prod.id !== productID
       );
       state.updateSum();
-      if (!state.totalAmount) {
+      updateOrderUISum(state);
+      updateDeliveryList(
+        CONTAINER_ELEMENTS.deliveryContainer,
+        state.getDeliveryInfo()
+      );
+      CART_ICON_AMOUNT.forEach(
+        (el) => (el.textContent = getProdsCountinCart(state.productsInCartIds))
+      );
+      const lengthIn = checkAvailableProds(
+        state.productsInCartIds,
+        true
+      ).length;
+      if (!lengthIn) {
         emptyCart();
       }
-      const lengthOut = checkNotAvailableProds(state.productsInCartIds).length;
+      const lengthOut = checkAvailableProds(
+        state.productsInCartIds,
+        false
+      ).length;
       if (!lengthOut) {
         productsEmpySection.style.display = 'none';
       }
       outOfStockCount.textContent = `Отсутствуют · ${lengthOut} ${formatPlural(
         lengthOut
       )}`;
-      updateOrderUISum(state);
-      CART_ICON_AMOUNT.forEach((el) => (el.textContent = state.totalAmount));
+
       productElement.remove();
     });
   }

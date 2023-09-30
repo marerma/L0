@@ -1,16 +1,16 @@
-@import './styles/normalize.css';
-@import './styles/vars.css';
-@import './styles/typographic.css';
-@import './styles/header.css';
-@import './styles/cart.css';
-@import './styles/product.css';
-@import './styles/delivery.css';
-@import './styles/payment.css';
-@import './styles/customer.css';
-@import './styles/order.css';
-@import './styles/footer.css';
-@import './styles/tooltip.css';
-@import './styles/modal.css';
+@import './normalize.css';
+@import './vars.css';
+@import './typographic.css';
+@import './header.css';
+@import './cart.css';
+@import './product.css';
+@import './delivery.css';
+@import './payment.css';
+@import './customer.css';
+@import './order.css';
+@import './footer.css';
+@import './tooltip.css';
+@import './modal.css';
 
 :root {
   font-family: 'Segoe UI', sans-serif;

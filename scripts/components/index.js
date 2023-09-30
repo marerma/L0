@@ -1,8 +1,4 @@
-export {
-  changeFavorite,
-  renderProducts,
-  deleteProduct,
-} from './product/productList';
+export { renderProducts, deleteProduct } from './product/productList';
 export { renderDeliveryList } from './delivery/deliveryList';
 export { validateCustomerData } from './customerForm';
 export {
@@ -11,9 +7,10 @@ export {
   showPaymentModal,
   showConfirmModal,
 } from './modals/modal';
-export { changeSubmitButtonText } from './modals/paymentCardsModal';
 export {
   changeProductAmount,
   toggleSection,
   updateSelection,
-} from './delivery/totalSum';
+  changeImmediatePayStatus,
+  updateSubmitBtnText,
+} from './totalSum';

@@ -1,4 +1,4 @@
-import { createElement, formatPrice, queryElement } from '../../utils/utils';
+import { createElement } from '../../utils/utils';
 import { hideModalVisibility } from './modal';
 
 export const paymentCardsModal = (state) => {
@@ -58,23 +58,4 @@ export const updatePaymentCard = (state) => {
   cardNumbers.forEach((el) => (el.textContent = chosenCard.number));
   hideModalVisibility();
   state.isOpen = false;
-};
-
-export const changeSubmitButtonText = (state) => {
-  const form = document.forms.orderDetail;
-  const payImmediateCheckbox = form.elements['pay-immediate'];
-  const orderBtn = queryElement('.order__submit-btn');
-  const notice = document.querySelectorAll('.pay-immediate_notice');
-
-  payImmediateCheckbox.addEventListener('click', () => {
-    if (payImmediateCheckbox.checked) {
-      orderBtn.textContent = `Оплатить ${formatPrice(state.totalSum)} сом`;
-      notice.forEach((el) => (el.textContent = ''));
-    } else {
-      orderBtn.textContent = 'Заказать';
-      notice.forEach(
-        (el) => (el.textContent = 'Спишем оплату с карты при получении')
-      );
-    }
-  });
 };

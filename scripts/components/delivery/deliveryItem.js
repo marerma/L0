@@ -1,4 +1,4 @@
-import { ThumbImage } from './thumb';
+import { ThumbImage } from './thumbImage';
 import { createElement } from '../../utils/utils';
 
 export class DeliveryItem {

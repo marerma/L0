@@ -1,4 +1,4 @@
-import { DeliveryItem } from './delivery';
+import { DeliveryItem } from './deliveryItem';
 
 export function renderDeliveryList(parentNode, deliveryDates) {
   const node = document.createElement('div');

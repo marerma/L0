@@ -121,8 +121,14 @@ const formatPlural = (number) => {
   }
 };
 
-const checkNotAvailableProds = (prodList) => {
-  return prodList.filter((prod) => prod.amount === 0);
+const checkAvailableProds = (prodList, available) => {
+  return available
+    ? prodList.filter((prod) => prod.amount !== 0)
+    : prodList.filter((prod) => prod.amount === 0);
+};
+
+const getProdsCountinCart = (prodList) => {
+  return prodList.reduce((acc, prod) => acc + prod.amount, 0);
 };
 
 export {
@@ -140,5 +146,6 @@ export {
   getRetinaSrc,
   toggleAllCheckedProds,
   formatPlural,
-  checkNotAvailableProds,
+  checkAvailableProds,
+  getProdsCountinCart,
 };

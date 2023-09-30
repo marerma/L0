@@ -1,16 +1,17 @@
-import { PRODUCTS } from '../../mockdata/products';
-import { APP_STATE } from '../../state';
-import { CONTAINER_ELEMENTS } from '../../utils/constants';
+import { PRODUCTS } from '../mockdata/products';
+import { APP_STATE } from '../state';
+import { CONTAINER_ELEMENTS } from '../utils/constants';
 import {
   checkPriceLength,
   findProduct,
   formatPlural,
   formatPrice,
   getFullProductPrice,
+  getProdsCountinCart,
   queryElement,
   toggleAllCheckedProds,
-} from '../../utils/utils';
-import { updateDeliveryList } from './deliveryList';
+} from '../utils/utils';
+import { updateDeliveryList } from './delivery/deliveryList';
 
 const changeIconClass = (node, amount, limit) => {
   if (amount !== limit) {
@@ -29,7 +30,7 @@ const updateOneProductPrice = (id, amount, full, discount) => {
   );
   disountPriceSpan.textContent = formatPrice(getFullProductPrice(full, amount));
 
-  if (checkPriceLength(getFullProductPrice(full, amount))) {
+  if (checkPriceLength(getFullProductPrice(discount, amount))) {
     fullPriceSpan.classList.add('product-item__text_large');
   } else fullPriceSpan.classList.remove('product-item__text_large');
 };
@@ -48,6 +49,7 @@ const updateOrderUISum = (state) => {
   TOTAL_ITEMS_AMOUNT.forEach(
     (el) => (el.textContent = `${totalAmount} ${formatPlural(totalAmount)}`)
   );
+  updateSubmitBtnText(state);
 };
 
 const updateAppSumUi = (
@@ -87,7 +89,9 @@ const changeProductAmount = (state) => {
       }
       const plusIcon = minus.nextElementSibling.nextElementSibling;
       updateAppSumUi(state, id, currentProduct, product, minus, plusIcon);
-      CART_ICON_AMOUNT.forEach((el) => (el.textContent = state.totalAmount));
+      CART_ICON_AMOUNT.forEach(
+        (el) => (el.textContent = getProdsCountinCart(state.productsInCartIds))
+      );
       amount.textContent = currentProduct.amount;
     });
   });
@@ -106,7 +110,9 @@ const changeProductAmount = (state) => {
       }
       const minusIcon = plus.previousElementSibling.previousElementSibling;
       updateAppSumUi(state, id, currentProduct, product, minusIcon, plus);
-      CART_ICON_AMOUNT.forEach((el) => (el.textContent = state.totalAmount));
+      CART_ICON_AMOUNT.forEach(
+        (el) => (el.textContent = getProdsCountinCart(state.productsInCartIds))
+      );
       amount.textContent = currentProduct.amount;
     });
   });
@@ -126,9 +132,8 @@ const updateSelection = (state) => {
     updateOrderUISum(state);
     updateDeliveryList(
       CONTAINER_ELEMENTS.deliveryContainer,
-      APP_STATE.deliveryDates()
+      APP_STATE.getDeliveryInfo()
     );
-    checkOrderButton(state);
   });
 
   for (const checkbox of ALL_PRODUCT_CHECKBOXES) {
@@ -143,9 +148,8 @@ const updateSelection = (state) => {
       updateOrderUISum(state);
       updateDeliveryList(
         CONTAINER_ELEMENTS.deliveryContainer,
-        APP_STATE.deliveryDates()
+        APP_STATE.getDeliveryInfo()
       );
-      checkOrderButton(state);
     });
   }
 };
@@ -172,9 +176,35 @@ const toggleSection = () => {
   );
 };
 
-const checkOrderButton = (state) => {
+const setSubmitBtnStatus = (state) => {
   const orderButton = queryElement('.order__submit-btn');
   orderButton.disabled = state.totalSum === 0;
+};
+
+const updateSubmitBtnText = (state) => {
+  const orderBtn = queryElement('.order__submit-btn');
+  const notice = document.querySelectorAll('.pay-immediate_notice');
+
+  setSubmitBtnStatus(state);
+  if (state.payImmediate) {
+    orderBtn.textContent = `Оплатить ${formatPrice(state.totalSum)} сом`;
+    notice.forEach((el) => (el.textContent = ''));
+  } else {
+    orderBtn.textContent = 'Заказать';
+    notice.forEach(
+      (el) => (el.textContent = 'Спишем оплату с карты при получении')
+    );
+  }
+};
+
+const changeImmediatePayStatus = (state) => {
+  const form = document.forms.orderDetail;
+  const payImmediateCheckbox = form.elements['pay-immediate'];
+
+  payImmediateCheckbox.addEventListener('click', () => {
+    state.payImmediate = payImmediateCheckbox.checked;
+    updateSubmitBtnText(state);
+  });
 };
 
 export {
@@ -182,5 +212,6 @@ export {
   changeProductAmount,
   toggleSection,
   updateSelection,
-  checkOrderButton,
+  updateSubmitBtnText,
+  changeImmediatePayStatus,
 };

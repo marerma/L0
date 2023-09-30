@@ -2,31 +2,32 @@
   display: flex;
   flex-wrap: wrap;
   padding-top: 14px;
-  max-width: 83%; }
+  max-width: 83%;
+}
 @media all and (max-width: 1024px) {
   .customer-details__wrapper {
     max-width: 100%;
-    padding-top: 12px; 
-  } 
+    padding-top: 12px;
+  }
 }
 @media all and (max-width: 580px) {
   .customer-details__wrapper {
     max-width: 100%;
-    padding-top: 0px; 
+    padding-top: 0px;
     flex-direction: column;
     gap: 14px;
-  } 
+  }
 }
 .customer-details__item {
   position: relative;
   margin-right: 24px;
   padding-top: 6px;
-  flex: 1 1 30%; 
+  flex: 1 1 30%;
 }
 @media all and (max-width: 1024px) {
   .customer-details__item {
-    padding-top: 8px; 
-  } 
+    padding-top: 8px;
+  }
 }
 @media all and (max-width: 580px) {
   .customer-details__item {
@@ -34,20 +35,26 @@
     margin-right: 0;
     padding-top: 13px;
     padding-bottom: 16px;
-   } }
-  
-.customer-details__item:first-child, .customer-details__item:nth-child(2) {
+  }
+}
+
+.customer-details__item:first-child,
+.customer-details__item:nth-child(2) {
   margin-bottom: 32px;
-  flex: 2 0 46%; }
-  
-  .customer-details__item:last-child, .customer-details__item:nth-child(2) {
-    margin-right: 0; }
-    
+  flex: 2 0 46%;
+}
+
+.customer-details__item:last-child,
+.customer-details__item:nth-child(2) {
+  margin-right: 0;
+}
+
 @media all and (max-width: 580px) {
-  .customer-details__item:first-child, .customer-details__item:nth-child(2) {
+  .customer-details__item:first-child,
+  .customer-details__item:nth-child(2) {
     flex: 1 1 100%;
     margin-bottom: 0px;
-  } 
+  }
   .customer-details__item:last-child {
     margin-bottom: 0;
   }
@@ -59,27 +66,35 @@
   border: none;
   border-bottom: 1px solid var(--grey-transparent);
   position: relative;
-  top: -2px; }
+  top: -2px;
+}
 @media all and (max-width: 580px) {
   .customer__input {
     top: 0px;
-    height: 24px; }
-    .customer__input_error {
-      padding-top: 3px; } }
+    height: 24px;
+  }
+  .customer__input_error {
+    padding-top: 3px;
+  }
+}
 
 .invalidInput {
   border-bottom: 1px solid var(--orange);
-  color: var(--orange); }
+  color: var(--orange);
+}
 
 .floating-label {
   position: absolute;
   pointer-events: none;
   left: 0;
   top: 2px;
-  transition: all 0.1s ease; }
+  transition: all 0.1s ease;
+}
 @media all and (max-width: 580px) {
   .floating-label {
-    top: 13px; } }
+    top: 13px;
+  }
+}
 
 input:focus ~ .floating-label,
 input:not(:focus):valid ~ .floating-label,
@@ -88,7 +103,8 @@ input:focus.active ~ .floating-label {
   top: -16px;
   bottom: 0px;
   left: 4px;
-  font-size: 13px; }
+  font-size: 13px;
+}
 @media all and (max-width: 580px) {
   input:focus ~ .floating-label,
   input:not(:focus):valid ~ .floating-label,
@@ -96,4 +112,6 @@ input:focus.active ~ .floating-label {
   input:focus.active ~ .floating-label {
     top: -4px;
     left: 0px;
-    font-size: 11px; } }
+    font-size: 11px;
+  }
+}

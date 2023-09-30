@@ -4,18 +4,28 @@ import { PRODUCT_TEMPLATE } from './productHtmlTemplate';
 export class ProductItem {
   constructor(product) {
     this.product = product;
+    this.productNode = createElement('div', 'product-item');
   }
 
-  renderNode() {
+  fillNode() {
     const { id, stock } = this.product;
 
-    const productNode = createElement('div', 'product-item');
-    productNode.setAttribute('id', id);
+    this.productNode.setAttribute('id', id);
 
-    productNode.innerHTML = PRODUCT_TEMPLATE(this.product);
+    this.productNode.innerHTML = PRODUCT_TEMPLATE(this.product);
     if (stock <= 0) {
-      productNode.classList.add('product-item_grey');
+      this.productNode.classList.add('product-item_grey');
     }
-    return productNode;
+  }
+  changeFavorite() {
+    const favIcon = this.productNode.querySelector('.product-favorite');
+    favIcon.addEventListener('click', () => {
+      favIcon.classList.toggle('product-favorite_active');
+    });
+  }
+  renderNode() {
+    this.fillNode();
+    this.changeFavorite();
+    return this.productNode;
   }
 }

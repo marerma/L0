@@ -17,25 +17,25 @@ export const deliveryModal = (state) => {
   <div class="modal__btns">
     <label for="delivery-target_office" class="modal__label tertiary-text bold">
       В пункт выдачи
-      <input id="delivery-target_office" type="radio" value="office" name="delivery-target" class="modal__button">
+      <input id="delivery-target_office" type="radio" value="office" name="delivery-target" checked class="modal__button" >
     </label>
     <label for="delivery-target_home" class="modal__label tertiary-text bold">
        Курьером
-      <input id="delivery-target_home" type="radio" value="home" name="delivery-target" checked class="modal__button">
+      <input id="delivery-target_home" type="radio" value="home" name="delivery-target" class="modal__button">
     </label>
   </div>
   <div class="modal__list-wrapper">
     <p class="tertiary-text bold">Мои адреса</p>
-    <ul class="modal__list-wrapper_list">
+    <ul class="modal__list-wrapper_list hidden">
     ${DELIVERY.home
       .map(
-        ({ id, address, isChecked }) => `<li class="modal__list-item">
+        ({ id, address }) => `<li class="modal__list-item">
       <input id="home-${id}" 
              value=${JSON.stringify(address)} 
              type="radio" 
              name="delivery-home" 
              class="radio-input" 
-             ${isChecked ? 'checked' : ''} />
+             ${address === state.deliveryAddress.address ? 'checked' : ''} />
       <label for="home-${id}">${address}</label>
       <span>
         <svg class="address-delete" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,16 +49,16 @@ export const deliveryModal = (state) => {
       .join('')}
     </ul>
 
-    <ul class="modal__list-wrapper_list hidden">
+    <ul class="modal__list-wrapper_list">
     ${DELIVERY.office
       .map(
-        ({ id, address, rating, isChecked }) => `<li class="modal__list-item">
+        ({ id, address, rating }) => `<li class="modal__list-item">
       <input id="office-${id}" 
              value=${JSON.stringify(address)} 
              type="radio" 
              name="delivery-office" 
              class="radio-input" 
-             ${isChecked ? 'checked' : ''}/>
+             ${address === state.deliveryAddress.address ? 'checked' : ''}/>
       <label for="office-${id}">${address}
       <p class="office-rating tertiary-text grey">${rating} Пункт выдачи</p>
       </label>
